@@ -1,7 +1,6 @@
 # Taiwan security activity deadlines countdown
 
 Based on [ai-deadlines](https://aideadlin.es) by @abshkdz
-This project is fork on [sec-deadlines](https://github.com/sec-deadlines/sec-deadlines.github.io).
 
 ## Adding/updating a activity
 
@@ -11,17 +10,17 @@ This project is fork on [sec-deadlines](https://github.com/sec-deadlines/sec-dea
 
 ### activity entry record
 
-Example record:
+Example record: (Below is exapmle, not truth.)
 
 ```
-- name: 臺灣好厲駭 (TaiwanHolyHigh)
+- name: SecTools.tw 開源資安文章徵稿中
   year: 2024
-  date: Aug 9 - 
-  description: 教育部先進資通安全實務人才培育計畫 第九屆臺灣好厲駭徵選活動開始囉!
-  link: https://reurl.cc/1v8nRD
+  date: Aug 9 - Oct 10
+  description: 專門在分享開源資安工具與文章的網站，現在開始號招各式寫手囉!
+  link: https://sectools.tw
   deadline:
     - "2024-9-31 23:00"
-  place: Online, Taiwan
+  place: Taipei, Taiwan
   tags: [EDU]
 ```
 
