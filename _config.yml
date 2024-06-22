@@ -1,14 +1,14 @@
-title: Security and Privacy Conference Deadlines
-description: Countdowns to top Security and Privacy conference deadlines.
-author: Bogdan Kulynych
+title: Taiwan Security Activity Deadlines
+description: Countdowns to information security activities in Taiwan (education type) mainly deadlines.
+author: Sheng-Shan Chen
 
 domain: "stwter20.github.io"
 baseurl: "https://stwater20.github.io/taiwan-security-deadlines"
 
-twitter_username: hiddenmarkov
-github_username: sec-deadlines
-github_repo: sec-deadlines
-ga_id: UA-104921371-1
+twitter_username: stwater20
+github_username: taiwan-security-deadlines
+github_repo: taiwan-security-deadlines
+ga_id: G-QJL47SDS41
 
 markdown: kramdown
 
