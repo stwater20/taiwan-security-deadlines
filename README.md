@@ -2,40 +2,41 @@
 
 Based on [ai-deadlines](https://aideadlin.es) by @abshkdz
 
-## Adding/updating a conference
+## Adding/updating a activity
 
 * Read the data format description below. **Note that the timezone format sign is inverted** (e.g., UTC+7 is written as `Etc/GMT-7`). It's [not a bug][0]. I hate this format too. I'd be happy to move to a different timezone JavaScript library that uses a friendlier format, but I don't have time for that.
 * Update `_data/conferences.yml`. You can do that on GitHub or locally after forking the repo.
 * Send a pull request
 
-### Conference entry record
+### activity entry record
 
 Example record:
 
 ```
-- name: Euro S&P
-  description: IEEE European Symposium on Security and Privacy
-  year: 2018
-  link: http://www.ieee-security.org/TC/EuroSP2018/
-  deadline: "2017-08-15 23:59"
-  date: April 24-26
-  place: London, UK
-  tags: [SEC, PRIV]
+- name: 臺灣好厲駭 (TaiwanHolyHigh)
+  year: 2024
+  date: Aug 9 - 
+  description: 教育部先進資通安全實務人才培育計畫 第九屆臺灣好厲駭徵選活動開始囉!
+  link: https://reurl.cc/1v8nRD
+  deadline:
+    - "2024-9-31 23:00"
+  place: Online, Taiwan
+  tags: [EDU]
 ```
 
 Descriptions of the fields:
 
 | Field name    | Description                                                                             |
 |---------------|-----------------------------------------------------------------------------------------|
-| `name`\*      | Short conference name, without year                                                     |
-| `year`\*      | Year the conference is happening                                                        |
+| `name`\*      | Short activity name, without year                                                     |
+| `year`\*      | Year the activity is happening                                                        |
 | `description` | Description, or long name                                                               |
-| `comment`     | Additional comments, e.g., co-located conference, rolling deadline                      |
-| `link`\*      | URL to the conference home page                                                         |
+| `comment`     | Additional comments, e.g., co-located activity, rolling deadline                      |
+| `link`\*      | URL to the activity home page                                                         |
 | `deadline`\*  | A list of deadlines. [(Gory details below)][4]                                          |
 | `timezone`    | [Timezone][5] in [tz][1] format. By default is UTC-12 ([AoE][2])                        |
-| `date`        | When the conference is happening                                                        |
-| `place`       | Where the conference is happening                                                       |
+| `date`        | When the activity is happening                                                        |
+| `place`       | Where the activity is happening                                                       |
 | `tags`        | One or multiple [tags][3]: `SEC`, `PRIV`, or `CRYPTO` (topic); `CONF` or `SHOP` (venue) |
 
 Fields marked with asterisk (\*) are required.
@@ -47,12 +48,12 @@ The *deadline* field can contain:
 
 1. The simplest option: a date and time in ISO format. Example: `["2017-08-19 23:59"]` (Note that you need to wrap even a single deadline in a list).
 2. If a deadline is rolling, you can use a template date, just substitute the
-   year with `%y` and the year before the conference with `%Y`. Example:
+   year with `%y` and the year before the activity with `%Y`. Example:
    `["%y-01-15 23:59"]` means there is a deadline on the 15th January in the
-   same year as the conference.
+   same year as the activity.
 2. A list of (1) or (2). Example of two rolling deadlines, with one in the end
-   of October in the year prior to the conference year, and the second in the
-   end of February in the same year as the conference:
+   of October in the year prior to the activity year, and the second in the
+   end of February in the same year as the activity:
   ```
   - "%Y-10-31 23:59"
   - "%y-02-28 23:59"
