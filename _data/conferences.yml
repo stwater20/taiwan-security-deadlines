@@ -19,3 +19,13 @@
     - "2024-6-5 23:59"
   place: Taiwan
   tags: [EDU, ONSITE]
+  
+- name: AIS3 junior 新型態高中職資安課程
+  year: 2024
+  date: Aug 15 - Aug 18
+  description: 為促進國內資安扎根教育的推動，延續新型態資安暑期課程AIS3 (Advanced Information Security Summer School)之推動成果，針對高中職生設計資安基礎實作演練課程以及遊戲式資安體驗課程與資安攻防演練競賽，藉由短期密集的課程以及團隊合作遊戲與競賽模式，促進高中職生對資安學習的興趣，提升學生的資安素養與資安基礎技術能力，進而發掘與培養資安潛力人才。
+  link: https://ais3.org/junior
+  deadline:
+    - "2024-7-14 17:00"
+  place: Taiwan
+  tags: [EDU, ONSITE]
