@@ -6,7 +6,7 @@
 
 <br>
 
-Based on [ai-deadlines](https://aideadlin.es) by @abshkdz
+Origin project was based on [ai-deadlines](https://aideadlin.es) by @abshkdz.
 
 ## Adding/updating a activity
 
