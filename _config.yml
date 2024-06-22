@@ -3,7 +3,7 @@ description: Countdowns to information security activities in Taiwan (education 
 author: Sheng-Shan Chen
 
 domain: "stwter20.github.io"
-baseurl: "https://stwater20.github.io/taiwan-security-deadlines"
+baseurl: "stwater20.github.io/taiwan-security-deadlines"
 
 twitter_username: stwater20
 github_username: stwater20
