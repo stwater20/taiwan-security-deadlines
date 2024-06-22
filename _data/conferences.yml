@@ -11,7 +11,7 @@
   tags: [EDU, ONSITE,ONLINE]
   
 
-  - name: 測試 Onsite
+- name: 測試 Onsite
   year: 2024
   date: Aug 19 2024 - Jul 31 2025
   description: 教育部先進資通安全實務人才培育計畫 第九屆臺灣好厲駭徵選活動開始囉!
@@ -21,8 +21,7 @@
   place: Taiwan
   tags: [ONSITE]
 
-
-   - name: 測試 Online
+- name: 測試 Online
   year: 2024
   date: Aug 19 2024 - Jul 31 2025
   description: 教育部先進資通安全實務人才培育計畫 第九屆臺灣好厲駭徵選活動開始囉!
