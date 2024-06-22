@@ -19,3 +19,13 @@
     - "2024-6-5 23:59"
   place: Taiwan
   tags: [EDU, ONSITE]
+
+- name: 全國技能競賽
+  year: 2024
+  date: Jul 17 - Jul 21
+  description: 第54屆分區技能競賽112年11月13日開始報名。
+  link: https://www.wdasec.gov.tw/Default.aspx
+  deadline:
+    - "2023-11-23 23:59"
+  place: Taiwan
+  tags: [EDU, ONSITE]
