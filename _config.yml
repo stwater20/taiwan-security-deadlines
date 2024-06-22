@@ -2,8 +2,8 @@ title: Security and Privacy Conference Deadlines
 description: Countdowns to top Security and Privacy conference deadlines.
 author: Bogdan Kulynych
 
-domain: "sec-deadlines.github.io"
-baseurl: ""
+domain: "stwter20.github.io"
+baseurl: "https://stwater20.github.io/taiwan-security-deadlines"
 
 twitter_username: hiddenmarkov
 github_username: sec-deadlines
