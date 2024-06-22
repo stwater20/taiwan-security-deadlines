@@ -10,23 +10,12 @@
   place: Taiwan
   tags: [EDU, ONSITE,ONLINE]
   
-
-- name: 測試 Onsite
+- name: AIS3 新型態資安實務暑期課程
   year: 2024
-  date: Aug 19 2024 - Jul 31 2025
-  description: 測試測試測試
-  link: https://sectools.tw
+  date: Jul 29 - Aug 4
+  description: 邀請具資安實務與國際資安競賽實戰經驗之國內外專家學者進行授課，透過資訊安全實務(或實戰)之經驗分享與演練，提升本課程學員之資安實務的能力與深度。
+  link: https://ais3.org/
   deadline:
-    - "2023-5-31 23:00"
+    - "2024-6-5 23:59"
   place: Taiwan
-  tags: [ONSITE]
-
-- name: 測試 Online
-  year: 2024
-  date: Aug 19 2024 - Jul 31 2025
-  description: 測試測試測試
-  link: https://sectools.tw
-  deadline:
-    - "2024-3-31 23:00"
-  place: Taiwan
-  tags: [ONLINE]
+  tags: [EDU, ONSITE]
