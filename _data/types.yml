@@ -1,4 +1,10 @@
 ---
 - name: Education Activity
   tag: EDU
+
+- name: Online
+  tag: ONLINE
+
+- name: Onsite
+  tag: ONSITE
   
