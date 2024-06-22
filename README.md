@@ -1,6 +1,7 @@
 # Taiwan security activity deadlines countdown
 
 Based on [ai-deadlines](https://aideadlin.es) by @abshkdz
+This project is fork on [sec-deadlines](https://github.com/sec-deadlines/sec-deadlines.github.io).
 
 ## Adding/updating a activity
 
