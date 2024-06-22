@@ -1,89 +1,85 @@
-## AI Deadlines [![Build Status](https://travis-ci.com/abhshkdz/ai-deadlines.svg?branch=gh-pages)](https://travis-ci.com/abhshkdz/ai-deadlines)
+# Security and Privacy deadlines countdown
 
-Countdown timers to keep track of a bunch of CV/NLP/ML/RO conference deadlines.
+Based on [ai-deadlines](https://aideadlin.es) by @abshkdz
 
-## Contributing
+## Adding/updating a conference
 
-[![](https://sourcerer.io/fame/abhshkdz/abhshkdz/ai-deadlines/images/0)](https://sourcerer.io/fame/abhshkdz/abhshkdz/ai-deadlines/links/0)[![](https://sourcerer.io/fame/abhshkdz/abhshkdz/ai-deadlines/images/1)](https://sourcerer.io/fame/abhshkdz/abhshkdz/ai-deadlines/links/1)[![](https://sourcerer.io/fame/abhshkdz/abhshkdz/ai-deadlines/images/2)](https://sourcerer.io/fame/abhshkdz/abhshkdz/ai-deadlines/links/2)[![](https://sourcerer.io/fame/abhshkdz/abhshkdz/ai-deadlines/images/3)](https://sourcerer.io/fame/abhshkdz/abhshkdz/ai-deadlines/links/3)[![](https://sourcerer.io/fame/abhshkdz/abhshkdz/ai-deadlines/images/4)](https://sourcerer.io/fame/abhshkdz/abhshkdz/ai-deadlines/links/4)[![](https://sourcerer.io/fame/abhshkdz/abhshkdz/ai-deadlines/images/5)](https://sourcerer.io/fame/abhshkdz/abhshkdz/ai-deadlines/links/5)[![](https://sourcerer.io/fame/abhshkdz/abhshkdz/ai-deadlines/images/6)](https://sourcerer.io/fame/abhshkdz/abhshkdz/ai-deadlines/links/6)[![](https://sourcerer.io/fame/abhshkdz/abhshkdz/ai-deadlines/images/7)](https://sourcerer.io/fame/abhshkdz/abhshkdz/ai-deadlines/links/7)
+* Read the data format description below. **Note that the timezone format sign is inverted** (e.g., UTC+7 is written as `Etc/GMT-7`). It's [not a bug][0]. I hate this format too. I'd be happy to move to a different timezone JavaScript library that uses a friendlier format, but I don't have time for that.
+* Update `_data/conferences.yml`. You can do that on GitHub or locally after forking the repo.
+* Send a pull request
 
-Contributions are very welcome!
+### Conference entry record
 
-To keep things minimal, I'm only looking to list top-tier conferences in AI as per [conferenceranks.com][6] and my judgement calls. Please feel free to maintain a separate fork if you don't see your sub-field or conference of interest listed.
+Example record:
 
-To add or update a deadline:
-- Fork the repository
-- Update `_data/conferences.yml`
-- Make sure it has the `title`, `year`, `id`, `link`, `deadline`, `timezone`, `date`, `place`, `sub` attributes
-    + See available timezone strings [here](https://momentjs.com/timezone/).
-- Optionally add a `note` and `abstract_deadline` in case the conference has a separate mandatory abstract deadline
-- Optionally add `hindex` (refers to h5-index from [here](https://scholar.google.com/citations?view_op=top_venues&vq=eng))
-- Example:
-    ```yaml
-    - title: BestConf
-      year: 2022
-      id: bestconf22  # title as lower case + last two digits of year
-      full_name: Best Conference for Anything  # full conference name
-      link: link-to-website.com
-      deadline: YYYY-MM-DD HH:SS
-      abstract_deadline: YYYY-MM-DD HH:SS
-      timezone: Asia/Seoul
-      place: Incheon, South Korea
-      date: September, 18-22, 2022
-      start: YYYY-MM-DD
-      end: YYYY-MM-DD
-      paperslink: link-to-full-paper-list.com
-      pwclink: link-to-papers-with-code.com
-      hindex: 100.0
-      sub: SP
-      note: Important
-    ```
-- Send a pull request
+```
+- name: Euro S&P
+  description: IEEE European Symposium on Security and Privacy
+  year: 2018
+  link: http://www.ieee-security.org/TC/EuroSP2018/
+  deadline: "2017-08-15 23:59"
+  date: April 24-26
+  place: London, UK
+  tags: [SEC, PRIV]
+```
 
-## Forks & other useful listings
+Descriptions of the fields:
 
-- [geodeadlin.es][3] by @LukasMosser
-- [neuro-deadlines][4] by @tbryn
-- [ai-challenge-deadlines][5] by @dieg0as
-- [CV-oriented ai-deadlines (with an emphasis on medical images)][8] by @duducheng
-- [es-deadlines (Embedded Systems, Computer Architecture, and Cyber-physical Systems)][9] by @AlexVonB and @k0nze
-- [2019-2020 International Conferences in AI, CV, DM, NLP and Robotics][10] by @JackieTseng
-- [ccf-deadlines][11] by @ccfddl
-- [networking-deadlines (Computer Networking, Measurement)][12] by @andrewcchu
-- [ad-deadlines.com][13] by @daniel-bogdoll
-- [sec-deadlines.github.io/ (Security and Privacy)][14] by @clementfung
-- [pythondeadlin.es][15] by @jesperdramsch
-- [deadlines.openlifescience.ai (Healthcare domain conferences and workshops)][16] by @monk1337
-- [hci-deadlines.github.io (Human-Computer Interaction conferences)][17] by @makinteract
-- [ds-deadlines.github.io (Distributed Systems, Event-based Systems, Performance, and Software Engineering conferences)][18] by @ds-deadlines
-- [https://deadlines.cpusec.org/ (Computer Architecture-Security conferences)][19] by @hoseinyavarzadeh
-- [se-deadlines.github.io (Software engineering conferences)][20] by @sivanahamer and @imranur-rahman
-- [awesome-mlss (Machine Learning Summer Schools)][21] by @sshkhr and @gmberton
+| Field name    | Description                                                                             |
+|---------------|-----------------------------------------------------------------------------------------|
+| `name`\*      | Short conference name, without year                                                     |
+| `year`\*      | Year the conference is happening                                                        |
+| `description` | Description, or long name                                                               |
+| `comment`     | Additional comments, e.g., co-located conference, rolling deadline                      |
+| `link`\*      | URL to the conference home page                                                         |
+| `deadline`\*  | A list of deadlines. [(Gory details below)][4]                                          |
+| `timezone`    | [Timezone][5] in [tz][1] format. By default is UTC-12 ([AoE][2])                        |
+| `date`        | When the conference is happening                                                        |
+| `place`       | Where the conference is happening                                                       |
+| `tags`        | One or multiple [tags][3]: `SEC`, `PRIV`, or `CRYPTO` (topic); `CONF` or `SHOP` (venue) |
 
-## License
+Fields marked with asterisk (\*) are required.
 
-This project is licensed under [MIT][1].
 
-It uses:
+### Deadline format
 
-- [IcoMoon Icons](https://icomoon.io/#icons-icomoon): [GPL](http://www.gnu.org/licenses/gpl.html) / [CC BY4.0](http://creativecommons.org/licenses/by/4.0/)
+The *deadline* field can contain:
 
-[1]: https://abhshkdz.mit-license.org/
-[2]: http://aideadlin.es/
-[3]: https://github.com/LukasMosser/geo-deadlines
-[4]: https://github.com/tbryn/neuro-deadlines
-[5]: https://github.com/dieg0as/ai-challenge-deadlines
-[6]: http://www.conferenceranks.com/#
-[8]: https://m3dv.github.io/ai-deadlines/
-[9]: https://ekut-es.github.io/es-deadlines/
-[10]: https://jackietseng.github.io/conference_call_for_paper/conferences.html
-[11]: https://ccfddl.github.io/
-[12]: https://noise-lab.net/networking-deadlines/
-[13]: https://ad-deadlines.com/
-[14]: https://sec-deadlines.github.io/
-[15]: https://pythondeadlin.es/
-[16]: https://deadlines.openlifescience.ai/
-[17]: https://hci-deadlines.github.io/
-[18]: https://ds-deadlines.github.io
-[19]: https://deadlines.cpusec.org/
-[20]: https://se-deadlines.github.io/
-[21]: https://awesome-mlss.com/
+1. The simplest option: a date and time in ISO format. Example: `["2017-08-19 23:59"]` (Note that you need to wrap even a single deadline in a list).
+2. If a deadline is rolling, you can use a template date, just substitute the
+   year with `%y` and the year before the conference with `%Y`. Example:
+   `["%y-01-15 23:59"]` means there is a deadline on the 15th January in the
+   same year as the conference.
+2. A list of (1) or (2). Example of two rolling deadlines, with one in the end
+   of October in the year prior to the conference year, and the second in the
+   end of February in the same year as the conference:
+  ```
+  - "%Y-10-31 23:59"
+  - "%y-02-28 23:59"
+  ```
+
+On the page, all deadlines are displayed in viewer's local time (that's a feature).
+
+*Note:* If the deadline hour is `{h}:00`, it will be automatically translated into `{h-1}:59:59` to avoid pain and confusion when it happens to be midnight in local time.
+
+### Timezones
+
+The timezone is specified in [tz format][1]. Unlike abbreviations (e.g. EST), these are un-ambiguous. Here are tz codes for some common timezones:
+
+| Common name                   | tz                                                                 |
+|-------------------------------|--------------------------------------------------------------------|
+| UTC                           | `Etc/UTC`                                                          |
+| America Pacific Time          | `America/Los_Angeles`                                              |
+| Pacific Standard Time (UTC-8) | `Etc/GMT+8` (Yes, the sign is inverted for some weird reason)      |
+| America Eastern Time          | `America/New_York`                                                 |
+| Eastern Standard Time (UTC-5) | `Etc/GMT+5`                                                        |
+| American Samoa Time (UTC-11)  | `Pacific/Samoa` or `Etc/GMT+11`. This timezone does not use DST.   |
+| Aleutian Islands              | `America/Adak`                                                     |
+
+[0]: https://momentjs.com/timezone/docs/#/zone-object/offset/
+[1]: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+[2]: https://www.timeanddate.com/time/zones/aoe
+[3]: _data/types.yml
+[4]: #deadline-format
+[5]: #timezones
+
