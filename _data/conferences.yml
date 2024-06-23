@@ -40,3 +40,13 @@
     - "2024-7-14 17:00"
   place: Taiwan
   tags: [EDU, ONSITE]
+
+- name: 初階資安攻防演練(AIS3 MyFirstCTF)
+  year: 2024
+  date: May 25 09:30 - May 25 17:30
+  description: 為啟發本國學生對資安學習的興趣，教育部先進資通安全實務人才培育計畫舉辦初階資安攻防演練(AIS3 MyFirstCTF)。透過CTF 競賽模式，期能鼓舞學生對資通訊安全的學習熱情，引導資安學習方向與目標。
+  link: https://ais3.org/mfctf/
+  deadline:
+    - "2024-5-15 18:00"
+  place: Taiwan
+  tags: [EDU, ONSITE]
