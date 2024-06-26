@@ -18,6 +18,10 @@
 
 <img src="image.png" width="50%" height="auto"/>
 
+## 問題
+
+目前已知 iphone 的 Safari 會出 Bug.
+
 ## Origin Project
 
 Origin project was based on [ai-deadlines](https://aideadlin.es) by @abshkdz.
