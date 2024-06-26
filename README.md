@@ -2,7 +2,10 @@
 
 鑑於常常忘記報名時間，這個專案提供台灣教育資安計畫的報名時間倒計時，您可以直接訪問 [taiwan-security-deadlines](https://stwater20.github.io/taiwan-security-deadlines) 查看現有或是到期的計畫有哪些，也歡迎您參與貢獻歐!
 
-最後，該專案依附在 [SecTools.tw](https://sectools.tw) 開源資安工具共享平台，懇請支持進來點個廣告，這樣可以幫我分擔一些網站的伺服器費用...
+該專案依附於 [SecTools.tw](https://sectools.tw) 開源資安工具共享平台，
+秉持開源精神共同維護，本網站提供服務僅供參考。
+
+- [ ] 更改時區為 Asia/Taipei，目前使用 AoE 的時區做法可能不適用於使用者群。
 
 <br>
 
