@@ -4,6 +4,7 @@
 
 該專案 Fork 自 [ai-deadlines](https://aideadlin.es)，
 並由 [SecTools.tw](https://sectools.tw) 開源資安工具共享平台進行維護，
+該專案公告統一發布至[https://sectools.tw/security-list/](https://sectools.tw/security-list/)，
 本網站提供的所有服務皆為僅供參考，請多方查證!
 
 ## 時區注意
@@ -16,6 +17,8 @@
 [https://datetime360.com/aoe-taipei-time/](https://datetime360.com/aoe-taipei-time/)
 
 <img src="image.png" width="50%" height="auto"/>
+
+## Origin Project
 
 Origin project was based on [ai-deadlines](https://aideadlin.es) by @abshkdz.
 
@@ -101,3 +104,7 @@ The timezone is specified in [tz format][1]. Unlike abbreviations (e.g. EST), th
 [4]: #deadline-format
 [5]: #timezones
 
+
+## LICENSE
+
+[MIT](LICENSE)
