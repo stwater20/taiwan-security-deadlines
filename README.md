@@ -6,9 +6,16 @@
 並由 [SecTools.tw](https://sectools.tw) 開源資安工具共享平台進行維護，
 本網站提供的所有服務皆為僅供參考，請多方查證!
 
-- [ ] 更改時區為 Asia/Taipei，目前使用 AoE 的時區做法可能不適用於使用者群。
+## 時區注意
 
-<br>
+目前使用時間為 AoE (Anywhere on Earth) ，如需要轉換台灣時間請參考：
+
+或者您可以直接將時間 減少 4 小時：
+因為 AoE = UTC - 12:00 與 Taipei Time (Taiwan) = UTC + 8:00 
+
+[https://datetime360.com/aoe-taipei-time/](https://datetime360.com/aoe-taipei-time/)
+
+<img src="image.png" width="50%" height="auto"/>
 
 Origin project was based on [ai-deadlines](https://aideadlin.es) by @abshkdz.
 
