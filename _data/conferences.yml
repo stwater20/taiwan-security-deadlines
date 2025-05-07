@@ -71,3 +71,14 @@
     - "2025-4-15 00:00"
   place: Taipei, Taiwan
   tags: [EDU, ONLINE, ONSITE]
+
+
+- name: AIS3 Pre-exam
+  tag: 2025
+  date: May 24 - May 26
+  description: 教育部跨領域資通訊安全人才培育計畫推動辦公室邀請具資安實務與國際資安競賽實戰經驗之國內外專家學者進行授課，透過資訊安全實務(或實戰)之經驗分享與演練，提升本課程學員之資安實務的能力與深度。
+  link: https://ais3.org/
+  deadline:
+    - "2025-5-24 10:30"
+  place: Taiwan
+  tags: [EDU, ONLINE]
