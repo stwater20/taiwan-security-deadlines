@@ -6,7 +6,7 @@
   description: 教育部115年度跨領域資通安全人才培育計畫，第十一屆臺灣好厲駭「資安實務導師(Mentor)制度」培訓學員徵選，培訓期程為115年9月至116年8月，結合業界與學界師資以師徒制傳授資安實務技術與競賽經驗。
   link: https://isip.moe.edu.tw/?page_id=368
   deadline:
-    - "2026-7-31 18:00"
+    - "2026-07-31 18:00"
   timezone: Asia/Taipei
   place: Taiwan
   tags: [EDU, ONSITE, ONLINE]
@@ -18,7 +18,7 @@
   comment: 倒數至大會首日開始
   link: https://hitcon.org/2026/
   deadline:
-    - "2026-8-21 09:00"
+    - "2026-08-21 09:00"
   timezone: Asia/Taipei
   place: Taipei, Taiwan
   tags: [EDU, ONSITE]
@@ -30,8 +30,8 @@
   comment: 第一個期限為 Pre-exam 報名截止，第二個為甄選報名與資料繳交截止
   link: https://ais3.org/
   deadline:
-    - "2026-5-2 18:00"
-    - "2026-5-31 18:00"
+    - "2026-05-02 18:00"
+    - "2026-05-31 18:00"
   timezone: Asia/Taipei
   place: Hsinchu, Taiwan
   tags: [EDU, ONSITE]
@@ -42,7 +42,7 @@
   description: 針對高中職生設計資安基礎實作演練課程與遊戲式資安體驗課程，8月4日至8月7日於國立清華大學台達館上課，8月13日線上專題報告。
   link: https://ais3.org/junior
   deadline:
-    - "2026-7-6 22:00"
+    - "2026-07-06 22:00"
   timezone: Asia/Taipei
   place: Hsinchu, Taiwan
   tags: [EDU, ONSITE]
@@ -53,7 +53,7 @@
   description: 為啟發本國學生對資安學習的興趣，教育部跨領域資通訊安全人才培育計畫舉辦初階資安攻防演練(AIS3 MyFirstCTF)，競賽於國立陽明交通大學工程三館舉行，與 AIS3 2026 Pre-Exam 共同辦理。
   link: https://ais3.org/mfctf/
   deadline:
-    - "2026-4-19 17:00"
+    - "2026-04-19 17:00"
   timezone: Asia/Taipei
   place: Hsinchu, Taiwan
   tags: [EDU, ONSITE]
@@ -64,7 +64,7 @@
   description: 由 iThome 主辦的 CYBERSEC 2026 臺灣資安大會，以「RESILIENT FUTURE」為主題，於南港展覽館 2 館舉行，涵蓋 300+ 場專業演說與 400+ 資安品牌展覽。
   link: https://cybersec.ithome.com.tw/2026/
   deadline:
-    - "2026-5-5 00:00"
+    - "2026-05-05 00:00"
   timezone: Asia/Taipei
   place: Taipei, Taiwan
   tags: [EDU, ONLINE, ONSITE]
@@ -75,7 +75,7 @@
   description: 教育部先進資通安全實務人才培育計畫 第九屆臺灣好厲駭徵選活動開始囉!
   link: https://reurl.cc/1v8nRD
   deadline:
-    - "2024-7-31 23:00"
+    - "2024-07-31 23:00"
   place: Taiwan
   tags: [EDU, ONSITE, ONLINE]
 
@@ -85,7 +85,7 @@
   description: 邀請具資安實務與國際資安競賽實戰經驗之國內外專家學者進行授課，透過資訊安全實務(或實戰)之經驗分享與演練，提升本課程學員之資安實務的能力與深度。
   link: https://ais3.org/
   deadline:
-    - "2024-6-5 23:59"
+    - "2024-06-05 23:59"
   place: Taiwan
   tags: [EDU, ONSITE]
 
@@ -105,7 +105,7 @@
   description: 為促進國內資安扎根教育的推動，延續新型態資安暑期課程AIS3 (Advanced Information Security Summer School)之推動成果，針對高中職生設計資安基礎實作演練課程以及遊戲式資安體驗課程與資安攻防演練競賽，藉由短期密集的課程以及團隊合作遊戲與競賽模式，促進高中職生對資安學習的興趣，提升學生的資安素養與資安基礎技術能力，進而發掘與培養資安潛力人才。
   link: https://ais3.org/junior
   deadline:
-    - "2024-7-14 17:00"
+    - "2024-07-14 17:00"
   place: Taiwan
   tags: [EDU, ONSITE]
 
@@ -115,7 +115,7 @@
   description: 為啟發本國學生對資安學習的興趣，教育部先進資通安全實務人才培育計畫舉辦初階資安攻防演練(AIS3 MyFirstCTF)。透過CTF 競賽模式，期能鼓舞學生對資通訊安全的學習熱情，引導資安學習方向與目標。
   link: https://ais3.org/mfctf/
   deadline:
-    - "2024-5-15 18:00"
+    - "2024-05-15 18:00"
   place: Taiwan
   tags: [EDU, ONSITE]
 
@@ -125,7 +125,7 @@
   description: 資安院為擴大培育資安人才，將於7月10日舉辦「CTF種子培訓工作坊」，鼓勵更多年輕學子踏入資安領域，並於未來能進一步擴大應用在各產業資安專業領域中。
   link: https://www.facebook.com/share/p/q64DfdL4WFo2Yciq/
   deadline:
-    - "2024-7-10 08:45"
+    - "2024-07-10 08:45"
   place: Taichung, Taiwan
   tags: [EDU, ONLINE, ONSITE]
 
@@ -135,7 +135,7 @@
   description: 由 iThome 主辦的 CYBERSEC 2025 臺灣資安大會，是亞洲最具指標性的資安會議與交流平台，吸引國內外資安領袖、企業及專業人士齊聚。
   link: https://cybersec.ithome.com.tw/2025/
   deadline:
-    - "2025-4-15 00:00"
+    - "2025-04-15 00:00"
   place: Taipei, Taiwan
   tags: [EDU, ONLINE, ONSITE]
 
@@ -145,6 +145,6 @@
   description: 教育部跨領域資通訊安全人才培育計畫推動辦公室邀請具資安實務與國際資安競賽實戰經驗之國內外專家學者進行授課，透過資訊安全實務(或實戰)之經驗分享與演練，提升本課程學員之資安實務的能力與深度。
   link: https://ais3.org/
   deadline:
-    - "2025-5-24 10:30"
+    - "2025-05-24 10:30"
   place: Taiwan
   tags: [EDU, ONLINE]
