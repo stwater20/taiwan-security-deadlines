@@ -9,6 +9,7 @@ $(function() {
   {% assign conf_id = conf.name | append: conf.year | append: '-0' | slugify %}
   $('#{{ conf_id }} .timer').html("TBA");
   $('#{{ conf_id }} .deadline-time').html("TBA");
+  $('#{{ conf_id }} .gcal').hide();
   deadlineByConf["{{ conf_id }}"] = null;
 
   {% else %}
@@ -68,6 +69,15 @@ $(function() {
       }
       $('#{{ conf_id }} .deadline-time').html(confDeadline.local().format('D MMM YYYY, h:mm:ss a'));
       deadlineByConf["{{ conf_id }}"] = confDeadline;
+
+      // "Add to Google Calendar" link for this deadline
+      var gcalTime = confDeadline.clone().utc().format('YYYYMMDDTHHmmss') + 'Z';
+      var gcalUrl = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
+        + '&text=' + encodeURIComponent({{ conf.name | jsonify }} + ' {{ conf.year }} deadline')
+        + '&dates=' + gcalTime + '/' + gcalTime
+        + '&details=' + encodeURIComponent({{ conf.link | jsonify }})
+        {% if conf.place %}+ '&location=' + encodeURIComponent({{ conf.place | jsonify }}){% endif %};
+      $('#{{ conf_id }} .gcal').attr('href', gcalUrl);
     }
   } else {
     // TODO: hide the conf_id ?
