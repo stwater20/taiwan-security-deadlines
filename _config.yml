@@ -1,9 +1,11 @@
 title: 台灣資安課程與活動提醒倒計時器 Taiwan Security Activity Deadlines
-description: Countdowns to information security activities in Taiwan (education type) mainly deadlines.
+description: 台灣資安活動、課程與競賽報名截止日倒數。AIS3、臺灣好厲駭、HITCON、CYBERSEC、MyFirstCTF 等報名時間一次掌握。
 author: Sheng-Shan Chen
+lang: zh-Hant-TW
 
-domain: "stwter20.github.io"
-baseurl: "https://stwater20.github.io/taiwan-security-deadlines"
+url: "https://stwater20.github.io"
+baseurl: "/taiwan-security-deadlines"
+domain: "stwater20.github.io"
 
 twitter_username: stwater20
 github_username: stwater20
@@ -12,3 +14,5 @@ ga_id: G-QJL47SDS41
 
 markdown: kramdown
 
+plugins:
+  - jekyll-sitemap

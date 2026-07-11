@@ -1,6 +1,6 @@
 ---
 ---
-<html>
+<html lang="zh-Hant-TW">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +8,38 @@
 
     <title>{{ site.title }}</title>
     <meta name="description" content="{{ site.description }}">
+    <meta name="keywords" content="台灣資安, 資安活動, 報名截止, 倒數, AIS3, 臺灣好厲駭, HITCON, CYBERSEC, MyFirstCTF, CTF, 資安競賽, 資安課程, Taiwan security deadlines">
+    <meta name="author" content="{{ site.author }}">
+    <link rel="canonical" href="{{ site.url }}{{ site.baseurl }}/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="{{ site.title }}">
+    <meta property="og:title" content="{{ site.title }}">
+    <meta property="og:description" content="{{ site.description }}">
+    <meta property="og:url" content="{{ site.url }}{{ site.baseurl }}/">
+    <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/image.png">
+    <meta property="og:locale" content="zh_TW">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@{{ site.twitter_username }}">
+    <meta name="twitter:title" content="{{ site.title }}">
+    <meta name="twitter:description" content="{{ site.description }}">
+    <meta name="twitter:image" content="{{ site.url }}{{ site.baseurl }}/image.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "{{ site.title }}",
+      "url": "{{ site.url }}{{ site.baseurl }}/",
+      "description": "{{ site.description }}",
+      "inLanguage": "zh-Hant-TW",
+      "author": { "@type": "Person", "name": "{{ site.author }}" }
+    }
+    </script>
+
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="{{ "/static/css/deadlines.css" | prepend:site.baseurl }}" media="screen,projection">
     <link rel="shortcut icon" href="{{ "/static/img/favicon.png" | prepend:site.baseurl }}">
@@ -31,10 +63,13 @@
             <p>Last update: {{ site.time | date: "%-d %B %Y" }}
             <div>
                 <p>
-                    Deadlines as iCal: 
-                    <a href="{{site.baseurl}}/ical/deadlines-all.ical">all</a>; 
-                    <a href="{{site.baseurl}}/ical/deadlines-onsite.ical">onsite</a>; 
-                    <a href="{{site.baseurl}}/ical/deadlines-online.ical">online</a>; 
+                    📅 一鍵訂閱截止日行事曆：
+                    <a class="btn btn-primary btn-xs" target="_blank" rel="noopener noreferrer" href="https://calendar.google.com/calendar/render?cid=webcal%3A%2F%2Fstwater20.github.io%2Ftaiwan-security-deadlines%2Fical%2Fdeadlines-all.ical">加入 Google 日曆</a>
+                    <a class="btn btn-default btn-xs" href="webcal://stwater20.github.io/taiwan-security-deadlines/ical/deadlines-all.ical">加入 Apple / Mac 日曆</a>
+                    &nbsp;或下載 iCal：
+                    <a href="{{site.baseurl}}/ical/deadlines-all.ical">all</a>;
+                    <a href="{{site.baseurl}}/ical/deadlines-onsite.ical">onsite</a>;
+                    <a href="{{site.baseurl}}/ical/deadlines-online.ical">online</a>;
                 </p>
             </div>
           </div>
@@ -92,6 +127,9 @@
                     <div class="meta">
                       {{ conf.comment }}
                     </div>
+                    <div>
+                      <a class="gcal" href="#" target="_blank" rel="noopener noreferrer" style="font-size:12px;">＋加入 Google 日曆</a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -102,12 +140,12 @@
         {% endfor %}
       </div>
       <footer>
-        Maintained by <a href="https://github.com/stwater20">Sheng-Shan Chen</a>. 
-        Created by <a href="https://sectools.tw/">Sectools.tw</a>. 
-        The original source code is available on <a href="https://github.com/stwater20/taiwan-security-deadlines">taiwan-security-deadlines</a>. 
+        Maintained by <a href="https://github.com/stwater20">Sheng-Shan Chen</a>.
+        Created by <a href="https://sectools.tw/">Sectools.tw</a>.
+        The original source code is available on <a href="https://github.com/stwater20/taiwan-security-deadlines">taiwan-security-deadlines</a>.
         Inspired by <a href="https://github.com/sec-deadlines/sec-deadlines.github.io">sec-deadlines</a>.
     </footer>
-    
+
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.countdown/2.2.0/jquery.countdown.min.js" integrity="sha512-lteuRD+aUENrZPTXWFRPTBcDDxIGWe5uu0apPEn+3ZKYDwDaEErIK9rvR0QzUGmUQ55KFE2RqGTVoZsKctGMVw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

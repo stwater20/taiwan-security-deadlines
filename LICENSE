@@ -1,6 +1,14 @@
 MIT License
 
-Copyright (c) 2024 Sheng-Shan Chen
+Copyright (c) 2024-2026 Sheng-Shan Chen (taiwan-security-deadlines)
+Copyright (c) 2021 Abhishek Das (ai-deadlines, the original project)
+Copyright (c) sec-deadlines.github.io contributors
+
+This project is a derivative of "ai-deadlines" by Abhishek Das
+(https://github.com/abhshkdz/ai-deadlines, MIT License) and
+"sec-deadlines" (https://github.com/sec-deadlines/sec-deadlines.github.io).
+The original copyright notices are retained above as required by the
+MIT License.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
