@@ -100,7 +100,12 @@ $(function() {
     if (aDiff > 0 && bDiff < 0) {
       return 1;
     }
-    return bDiff - aDiff;
+    if (aDiff < 0 && bDiff < 0) {
+      // both upcoming: closest deadline first
+      return bDiff - aDiff;
+    }
+    // both expired: most recently expired first
+    return aDiff - bDiff;
   });
   $('.conf-container').append(confs);
 
