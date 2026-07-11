@@ -3,9 +3,9 @@ description: 台灣資安活動、課程與競賽報名截止日倒數。AIS3、
 author: Sheng-Shan Chen
 lang: zh-Hant-TW
 
-url: "https://stwater20.github.io"
-baseurl: "/taiwan-security-deadlines"
-domain: "stwater20.github.io"
+url: "https://taiwan-security-deadlines.sectools.tw"
+baseurl: ""
+domain: "taiwan-security-deadlines.sectools.tw"
 
 twitter_username: stwater20
 github_username: stwater20

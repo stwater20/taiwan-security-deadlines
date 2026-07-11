@@ -1,12 +1,12 @@
 # 台灣資安活動報名截止倒數 Taiwan Security Activity Deadlines
 
-[![GitHub Pages](https://img.shields.io/badge/demo-online-brightgreen)](https://stwater20.github.io/taiwan-security-deadlines)
+[![GitHub Pages](https://img.shields.io/badge/demo-online-brightgreen)](https://taiwan-security-deadlines.sectools.tw)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-blue.svg)](https://github.com/stwater20/taiwan-security-deadlines/pulls)
 
 鑑於常常忘記報名時間，這個專案提供台灣資安教育活動（課程、競賽、研討會）的報名截止倒數。
 
-👉 **線上瀏覽：[taiwan-security-deadlines](https://stwater20.github.io/taiwan-security-deadlines)**
+👉 **線上瀏覽：[taiwan-security-deadlines](https://taiwan-security-deadlines.sectools.tw)**
 
 收錄範圍包含：AIS3 暑期課程、AIS3 Junior、MyFirstCTF、臺灣好厲駭、HITCON、CYBERSEC 臺灣資安大會、金盾獎、全國技能競賽等。
 
@@ -16,12 +16,12 @@
 
 不想常來看網站？直接把截止日訂閱進你的行事曆：
 
-* **Google 日曆**：[點此一鍵訂閱](https://calendar.google.com/calendar/render?cid=webcal%3A%2F%2Fstwater20.github.io%2Ftaiwan-security-deadlines%2Fical%2Fdeadlines-all.ical)，或在 Google 日曆「其他日曆 → 加入 → 加入網址」貼上下方 iCal 連結
+* **Google 日曆**：[點此一鍵訂閱](https://calendar.google.com/calendar/render?cid=webcal%3A%2F%2Ftaiwan-security-deadlines.sectools.tw%2Fical%2Fdeadlines-all.ical)，或在 Google 日曆「其他日曆 → 加入 → 加入網址」貼上下方 iCal 連結
 * **Apple / Mac 日曆**：點擊網站上的「加入 Apple / Mac 日曆」按鈕（webcal 連結），或在行事曆 App「檔案 → 新增行事曆訂閱」貼上下方連結
 * **iCal 連結**：
-  * 全部活動：`https://stwater20.github.io/taiwan-security-deadlines/ical/deadlines-all.ical`
-  * 實體活動：`https://stwater20.github.io/taiwan-security-deadlines/ical/deadlines-onsite.ical`
-  * 線上活動：`https://stwater20.github.io/taiwan-security-deadlines/ical/deadlines-online.ical`
+  * 全部活動：`https://taiwan-security-deadlines.sectools.tw/ical/deadlines-all.ical`
+  * 實體活動：`https://taiwan-security-deadlines.sectools.tw/ical/deadlines-onsite.ical`
+  * 線上活動：`https://taiwan-security-deadlines.sectools.tw/ical/deadlines-online.ical`
 
 網站上每筆截止日旁也有「＋加入 Google 日曆」可以單筆加入。
 
@@ -97,7 +97,7 @@
 git clone https://github.com/stwater20/taiwan-security-deadlines.git
 cd taiwan-security-deadlines
 gem install bundler jekyll
-jekyll serve   # http://localhost:4000/taiwan-security-deadlines/
+jekyll serve   # http://localhost:4000/
 ```
 
 純資料修改不需要本地環境，直接在 GitHub 網頁上改即可。
