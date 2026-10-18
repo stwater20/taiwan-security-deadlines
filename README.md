@@ -56,9 +56,10 @@
 | `name` | ✅ | 活動名稱，不含年份 |
 | `year` | ✅ | 活動年份（注意是 `year:` 不是 `tag:`） |
 | `link` | ✅ | 活動官網或報名頁 |
-| `deadline` | ✅ | 截止時間清單，就算只有一筆也要用清單格式 |
+| `deadline` | ✅ | 截止時間清單（`"YYYY-MM-DD HH:MM"`），就算只有一筆也要用清單格式；時程未公布請填 `"TBA"` |
 | `timezone` |  | [tz 格式](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)時區。**台灣活動請填 `Asia/Taipei`**，不填會被當成 AoE (UTC-12) |
-| `date` |  | 活動舉辦日期（顯示用文字） |
+| `date` |  | 活動舉辦日期（顯示用文字，沒有 `start` 時才會顯示） |
+| `start` / `end` |  | 活動起訖日（`YYYY-MM-DD`），用來顯示日期並產生 Google 搜尋的活動結構化資料，建議填寫 |
 | `description` |  | 活動簡介 |
 | `comment` |  | 補充說明，例如多個 deadline 各代表什麼 |
 | `place` |  | 地點 |

@@ -1,10 +1,9 @@
 ---
-- name: Education Activity
+- name: 教育活動
   tag: EDU
 
-- name: Online
+- name: 線上
   tag: ONLINE
 
-- name: Onsite
+- name: 實體
   tag: ONSITE
-  

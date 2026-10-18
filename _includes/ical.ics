@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//SecTools.tw//Taiwan Security Deadlines//ZH-TW
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:{{ include.calname }}
+X-WR-TIMEZONE:Asia/Taipei{% assign tyear = 'now' | date: '%Y' %}{% for conf in include.conferences %}{% assign num_deadlines = conf.deadline.size %}{% assign range_end = num_deadlines | minus: 1 %}{% for i in (0..range_end) %}{% assign deadline = conf.deadline[i] | replace: '%y', tyear %}{% if deadline != "TBA" %}{% assign conf_id = conf.name | append: conf.year | append: '-' | append: i | slugify %}{% assign tz = conf.timezone | default: 'Etc/GMT+12' %}
+BEGIN:VEVENT
+UID:{{ conf_id }}@stwater20.github.io
+SUMMARY:{{ conf.name }} {{ conf.year }} 報名截止{% if num_deadlines >= 2 %} ({{ i | plus: 1 }}/{{ num_deadlines }}){% endif %}
+DESCRIPTION:{{ conf.name }} {{ conf.year }}｜{{ conf.date }}｜{{ conf.place }}\n{{ conf.description | strip_newlines }}{% if conf.comment %}\n{{ conf.comment }}{% endif %}\n{{ conf.link }}
+URL:{{ conf.link }}
+LOCATION:{{ conf.place }}
+CLASS:PUBLIC
+DTSTAMP:{{ site.time | date: '%Y%m%dT%H%M%SZ' }}
+DTSTART;TZID={{ tz }}:{{ deadline | date: '%Y%m%dT%H%M' }}00
+DTEND;TZID={{ tz }}:{{ deadline | date: '%Y%m%dT%H%M' }}59
+END:VEVENT{% endif %}{% endfor %}{% endfor %}
+END:VCALENDAR

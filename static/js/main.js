@@ -1,172 +1,178 @@
----
----
-$(function() {
-  deadlineByConf = {};
+(function () {
+  'use strict';
 
-  {% for conf in site.data.conferences %}
-  // {{ conf.name }} {{ conf.year }}
-  {% if conf.deadline[0] == "TBA" %}
-  {% assign conf_id = conf.name | append: conf.year | append: '-0' | slugify %}
-  $('#{{ conf_id }} .timer').html("TBA");
-  $('#{{ conf_id }} .deadline-time').html("TBA");
-  $('#{{ conf_id }} .gcal').hide();
-  deadlineByConf["{{ conf_id }}"] = null;
+  var DAY = 864e5;
+  var STORE_KEY = (window.SITE_DOMAIN || 'tsd') + ':filters';
 
-  {% else %}
-  var rawDeadlines = {{ conf.deadline | jsonify }} || [];
-  if (rawDeadlines.constructor !== Array) {
-    rawDeadlines = [rawDeadlines];
+  // Convert a wall-clock time ("YYYY-MM-DD HH:mm") in an IANA time zone to a Date.
+  function zonedTime(raw, tz) {
+    var m = /^(\d{4})-(\d{1,2})-(\d{1,2})(?:[ T](\d{1,2}):(\d{2}))?/.exec(raw);
+    if (!m) return null;
+    var wall = Date.UTC(+m[1], m[2] - 1, +m[3], +(m[4] || 23), m[4] ? +m[5] : 59);
+    var t = wall - tzOffset(wall, tz);
+    return new Date(wall - tzOffset(t, tz));
   }
-  var parsedDeadlines = [];
-  while (rawDeadlines.length > 0) {
-    var rawDeadline = rawDeadlines.pop();
-    // deal with year template in deadline
-    year = {{ conf.year }};
-    rawDeadline = rawDeadline.replace('%y', year).replace('%Y', year - 1);
-    // adjust date according to deadline timezone
-    {% if conf.timezone %}
-    var deadline = moment.tz(rawDeadline, "{{ conf.timezone }}");
-    {% else %}
-    var deadline = moment.tz(rawDeadline, "Etc/GMT+12"); // Anywhere on Earth
-    {% endif %}
 
-    // post-process date
-    if (deadline.minutes() === 0) {
-      deadline.subtract(1, 'seconds');
+  // Offset (ms) of tz from UTC at instant t.
+  function tzOffset(t, tz) {
+    try {
+      var parts = new Intl.DateTimeFormat('en-US', {
+        timeZone: tz, hourCycle: 'h23',
+        year: 'numeric', month: '2-digit', day: '2-digit',
+        hour: '2-digit', minute: '2-digit', second: '2-digit'
+      }).formatToParts(new Date(t));
+      var p = {};
+      parts.forEach(function (x) { p[x.type] = +x.value; });
+      return Date.UTC(p.year, p.month - 1, p.day, p.hour % 24, p.minute, p.second) - Math.floor(t / 1000) * 1000;
+    } catch (e) {
+      return 8 * 36e5; // fall back to Taipei
     }
-    if (deadline.minutes() === 59) {
-      deadline.seconds(59);
-    }
-    parsedDeadlines.push(deadline);
   }
-  // due to pop before; we need to reverse such that the i index later matches
-  // the right parsed deadline
-  parsedDeadlines.reverse();
 
-  {% assign range_end = conf.deadline.size | minus: 1 %}
-  {% for i in (0..range_end) %}
-  {% assign conf_id = conf.name | append: conf.year | append: '-' | append: i | slugify %}
-  var deadlineId = {{ i }};
-  if (deadlineId < parsedDeadlines.length) {
-    var confDeadline = parsedDeadlines[deadlineId];
-
-    // render countdown timer
-    if (confDeadline) {
-      function make_update_countdown_fn(confDeadline) {
-        return function(event) {
-          diff = moment() - confDeadline
-          if (diff <= 0) {
-             $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
-          } else {
-            $(this).html(confDeadline.fromNow());
-          }
-        }
-      }
-      $('#{{ conf_id }} .timer').countdown(confDeadline.toDate(), make_update_countdown_fn(confDeadline));
-      // check if date has passed, add 'past' class to it
-      if (moment() - confDeadline > 0) {
-        $('#{{ conf_id }}').addClass('past');
-      }
-      $('#{{ conf_id }} .deadline-time').html(confDeadline.local().format('D MMM YYYY, h:mm:ss a'));
-      deadlineByConf["{{ conf_id }}"] = confDeadline;
-
-      // "Add to Google Calendar" link for this deadline
-      var gcalTime = confDeadline.clone().utc().format('YYYYMMDDTHHmmss') + 'Z';
-      var gcalUrl = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
-        + '&text=' + encodeURIComponent({{ conf.name | jsonify }} + ' {{ conf.year }} deadline')
-        + '&dates=' + gcalTime + '/' + gcalTime
-        + '&details=' + encodeURIComponent({{ conf.link | jsonify }})
-        {% if conf.place %}+ '&location=' + encodeURIComponent({{ conf.place | jsonify }}){% endif %};
-      $('#{{ conf_id }} .gcal').attr('href', gcalUrl);
-    }
-  } else {
-    // TODO: hide the conf_id ?
-  }
-  {% endfor %}
-  {% endif %}
-  {% endfor %}
-
-  // Reorder list
-  var today = moment();
-  var confs = $('.conf').detach();
-  confs.sort(function(a, b) {
-    var aDeadline = deadlineByConf[a.id];
-    var bDeadline = deadlineByConf[b.id];
-    var aDiff = today.diff(aDeadline);
-    var bDiff = today.diff(bDeadline);
-    if (aDiff < 0 && bDiff > 0) {
-      return -1;
-    }
-    if (aDiff > 0 && bDiff < 0) {
-      return 1;
-    }
-    if (aDiff < 0 && bDiff < 0) {
-      // both upcoming: closest deadline first
-      return bDiff - aDiff;
-    }
-    // both expired: most recently expired first
-    return aDiff - bDiff;
+  var fmtDate = new Intl.DateTimeFormat('zh-TW', {
+    year: 'numeric', month: '2-digit', day: '2-digit', weekday: 'short',
+    hour: '2-digit', minute: '2-digit', hourCycle: 'h23'
   });
-  $('.conf-container').append(confs);
+  var fmtShort = new Intl.DateTimeFormat('zh-TW', { month: 'numeric', day: 'numeric' });
 
-  // Set checkboxes
-  var conf_type_data = {{ site.data.types | jsonify }};
-  var all_tags = [];
-  var toggle_status = {};
-  for (var i = 0; i < conf_type_data.length; i++) {
-    all_tags[i] = conf_type_data[i]['tag'];
-    toggle_status[all_tags[i]] = false;
-  }
-  var tags = store.get('{{ site.domain }}');
-  if (tags === undefined) {
-    tags = all_tags;
-  }
-  for (var i = 0; i < tags.length; i++) {
-    $('#' + tags[i] + '-checkbox').prop('checked', false);
-    toggle_status[tags[i]] = false;
-  }
-  store.set('{{ site.domain }}', tags);
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
 
-  function update_conf_list() {
-    confs.each(function(i, conf) {
-      var conf = $(conf);
-      var show = false;
-      var set_tags = [];
-      for (var i = 0; i < all_tags.length; i++) {
-        // if tag has been selected by user, check if the conference has it
-        if(toggle_status[all_tags[i]]) {
-          set_tags.push(conf.hasClass(all_tags[i]));
-        }
+  function gcalStamp(d) {
+    return d.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+  }
+
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.card'));
+  var lists = {
+    open: document.getElementById('list-open'),
+    tba: document.getElementById('list-tba'),
+    past: document.getElementById('list-past')
+  };
+
+  var items = cards.map(function (el) {
+    var raw = el.getAttribute('data-deadline');
+    var d = raw === 'TBA' ? null : zonedTime(raw, el.getAttribute('data-tz'));
+    var item = {
+      el: el,
+      deadline: d,
+      tags: (el.getAttribute('data-tags') || '').split(/\s+/),
+      text: el.textContent.replace(/\s+/g, ' ').toLowerCase(),
+      num: el.querySelector('.cd-num'),
+      unit: el.querySelector('.cd-unit')
+    };
+    if (d) {
+      el.querySelector('.dl-time').textContent = fmtDate.format(d);
+      var gcal = el.querySelector('.gcal');
+      if (gcal) {
+        var stamp = gcalStamp(d);
+        gcal.href = 'https://calendar.google.com/calendar/render?action=TEMPLATE' +
+          '&text=' + encodeURIComponent(el.getAttribute('data-title') + ' 報名截止') +
+          '&dates=' + stamp + '/' + stamp +
+          '&details=' + encodeURIComponent(el.getAttribute('data-link')) +
+          '&location=' + encodeURIComponent(el.getAttribute('data-place') || '');
+        gcal.hidden = false;
       }
-      let empty_or_all_true = arr => arr.every(Boolean);
-      // show a conference if it has all user-selected tags
-      // if no tag is set (= array is empty), show all entries
-      show = empty_or_all_true(set_tags);
-      if (show) {
-        conf.show();
+    }
+    return item;
+  });
+
+  function status(item, now) {
+    if (!item.deadline) return 'tba';
+    return item.deadline - now > 0 ? 'open' : 'past';
+  }
+
+  // Place cards into their section, sorted.
+  function arrange() {
+    var now = Date.now();
+    var groups = { open: [], tba: [], past: [] };
+    items.forEach(function (it) {
+      it.status = status(it, now);
+      groups[it.status].push(it);
+    });
+    groups.open.sort(function (a, b) { return a.deadline - b.deadline; });
+    groups.past.sort(function (a, b) { return b.deadline - a.deadline; });
+    Object.keys(groups).forEach(function (k) {
+      groups[k].forEach(function (it) {
+        it.el.classList.remove('is-open', 'is-tba', 'is-past');
+        it.el.classList.add('is-' + k);
+        lists[k].appendChild(it.el);
+      });
+    });
+
+    var next = groups.open[0];
+    document.getElementById('stat-open').textContent = groups.open.length;
+    if (next) {
+      var days = Math.floor((next.deadline - now) / DAY);
+      document.getElementById('stat-next').textContent = days < 1 ? '今天' : days + ' 天';
+      document.getElementById('stat-next-label').textContent = '後截止：' + next.el.getAttribute('data-title');
+    } else {
+      document.getElementById('stat-next').textContent = '—';
+    }
+    return groups;
+  }
+
+  function tick() {
+    var now = Date.now();
+    var moved = false;
+    items.forEach(function (it) {
+      if (!it.deadline) return;
+      var diff = it.deadline - now;
+      if ((diff > 0) !== (it.status === 'open')) moved = true;
+      var el = it.el;
+      el.classList.toggle('urgent', diff > 0 && diff < 3 * DAY);
+      el.classList.toggle('soon', diff >= 3 * DAY && diff < 14 * DAY);
+      if (diff > 0) {
+        var s = Math.floor(diff / 1000);
+        var d = Math.floor(s / 86400);
+        var hms = pad(Math.floor(s % 86400 / 3600)) + ':' + pad(Math.floor(s % 3600 / 60)) + ':' + pad(s % 60);
+        it.num.textContent = d > 0 ? d : hms;
+        it.unit.textContent = d > 0 ? '天 ' + hms : '';
       } else {
-        conf.hide()
+        var ago = Math.floor(-diff / DAY);
+        it.num.textContent = '已截止';
+        it.unit.textContent = ago < 1 ? '今天' : ago + ' 天前';
       }
     });
+    if (moved) { arrange(); filter(); }
   }
-  update_conf_list();
 
-  // Event handler on checkbox change
-  $('form :checkbox').change(function(e) {
-    var checked = $(this).is(':checked');
-    var tag = $(this).prop('id').slice(0, -9);
-    toggle_status[tag] = checked;
-
-    if (checked == true) {
-      if (tags.indexOf(tag) < 0)
-        tags.push(tag);
-    }
-    else {
-      var idx = tags.indexOf(tag);
-      if (idx >= 0)
-        tags.splice(idx, 1);
-    }
-    store.set('{{ site.domain }}', tags);
-    update_conf_list();
+  // Filtering ------------------------------------------------------------
+  var q = document.getElementById('q');
+  var chips = Array.prototype.slice.call(document.querySelectorAll('.chip'));
+  var active = [];
+  try { active = JSON.parse(localStorage.getItem(STORE_KEY)) || []; } catch (e) { active = []; }
+  chips.forEach(function (c) {
+    var tag = c.getAttribute('data-tag');
+    c.setAttribute('aria-pressed', active.indexOf(tag) >= 0 ? 'true' : 'false');
+    c.addEventListener('click', function () {
+      var i = active.indexOf(tag);
+      if (i >= 0) active.splice(i, 1); else active.push(tag);
+      c.setAttribute('aria-pressed', i >= 0 ? 'false' : 'true');
+      try { localStorage.setItem(STORE_KEY, JSON.stringify(active)); } catch (e) {}
+      filter();
+    });
   });
-});
+  q.addEventListener('input', filter);
+
+  function filter() {
+    var terms = q.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+    var counts = { open: 0, tba: 0, past: 0 };
+    items.forEach(function (it) {
+      var ok = active.every(function (t) { return it.tags.indexOf(t) >= 0; }) &&
+        terms.every(function (t) { return it.text.indexOf(t) >= 0; });
+      it.el.hidden = !ok;
+      if (ok) counts[it.status]++;
+    });
+    document.getElementById('sec-tba').hidden = counts.tba === 0;
+    document.getElementById('h-open').parentNode.hidden = counts.open === 0;
+    document.getElementById('past-count').textContent = counts.past + ' 筆';
+    var past = document.getElementById('sec-past');
+    past.hidden = counts.past === 0;
+    if (terms.length && counts.past) past.open = true;
+    document.getElementById('empty').hidden = counts.open + counts.tba + counts.past > 0;
+  }
+
+  arrange();
+  tick();
+  filter();
+  setInterval(tick, 1000);
+})();
