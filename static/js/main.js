@@ -171,8 +171,40 @@
     document.getElementById('empty').hidden = counts.open + counts.tba + counts.past > 0;
   }
 
+  // Share / permalink -----------------------------------------------------
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('.share');
+    if (!a) return;
+    e.preventDefault();
+    var card = a.closest('.card');
+    var url = location.href.split('#')[0] + '#' + card.id;
+    history.replaceState(null, '', '#' + card.id);
+    if (navigator.share && matchMedia('(pointer: coarse)').matches) {
+      navigator.share({ title: card.getAttribute('data-title'), url: url }).catch(function () {});
+      return;
+    }
+    var done = function () {
+      a.textContent = '已複製連結';
+      setTimeout(function () { a.textContent = '分享'; }, 1600);
+    };
+    if (navigator.clipboard) navigator.clipboard.writeText(url).then(done, function () {});
+  });
+
+  function revealHash() {
+    var id = decodeURIComponent(location.hash.slice(1));
+    var card = id && document.getElementById(id);
+    if (!card || !card.classList.contains('card')) return;
+    if (card.hidden) { q.value = ''; active = []; chips.forEach(function (c) { c.setAttribute('aria-pressed', 'false'); }); filter(); }
+    var past = document.getElementById('sec-past');
+    if (past.contains(card)) past.open = true;
+    card.classList.add('flash');
+    card.scrollIntoView({ block: 'center' });
+  }
+  window.addEventListener('hashchange', revealHash);
+
   arrange();
   tick();
   filter();
+  revealHash();
   setInterval(tick, 1000);
 })();

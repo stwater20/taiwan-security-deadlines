@@ -1,6 +1,8 @@
 ---
 ---
-{%- assign page_title = "台灣資安活動報名截止倒數｜AIS3、HITCON、CYBERSEC、金盾獎、CTF 競賽" -%}
+{%- assign y1 = site.time | date: "%Y" -%}
+{%- assign y2 = y1 | plus: 1 -%}
+{%- assign page_title = y1 | append: "–" | append: y2 | append: " 資安競賽、CTF 比賽、資安課程報名時間總整理｜台灣資安活動行事曆" -%}
 {%- assign page_url = site.url | append: site.baseurl | append: "/" -%}
 <!doctype html>
 <html lang="zh-Hant-TW">
@@ -19,15 +21,16 @@
     <meta property="og:title" content="{{ page_title }}">
     <meta property="og:description" content="{{ site.description }}">
     <meta property="og:url" content="{{ page_url }}">
-    <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/image.png">
-    <meta property="og:image:width" content="1024">
-    <meta property="og:image:height" content="770">
+    <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/static/img/og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="台灣資安競賽・課程報名時間總整理">
     <meta property="og:locale" content="zh_TW">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@{{ site.twitter_username }}">
     <meta name="twitter:title" content="{{ page_title }}">
     <meta name="twitter:description" content="{{ site.description }}">
-    <meta name="twitter:image" content="{{ site.url }}{{ site.baseurl }}/image.png">
+    <meta name="twitter:image" content="{{ site.url }}{{ site.baseurl }}/static/img/og.png">
 
     <link rel="icon" type="image/png" href="{{ site.baseurl }}/static/img/favicon.png">
     <link rel="apple-touch-icon" href="{{ site.baseurl }}/static/img/favicon.png">
@@ -40,7 +43,7 @@
         {
           "@type": "WebSite",
           "@id": "{{ page_url }}#website",
-          "name": "台灣資安活動報名截止倒數 Taiwan Security Deadlines",
+          "name": "台灣資安活動行事曆 Taiwan Security Deadlines",
           "alternateName": "Taiwan Security Deadlines",
           "url": "{{ page_url }}",
           "description": {{ site.description | jsonify }},
@@ -102,10 +105,10 @@
           </a>
         </nav>
 
-        <h1>台灣資安活動<br class="br-sm">報名截止倒數</h1>
+        <h1>台灣資安競賽・課程<br class="br-sm">報名時間總整理</h1>
         <p class="lead">
-          AIS3、臺灣好厲駭、HITCON、CYBERSEC 臺灣資安大會、金盾獎、MyFirstCTF、全國技能競賽……
-          台灣資安課程、競賽與研討會的報名期限，一頁看完、一鍵訂閱，不再錯過。
+          {{ y1 }}–{{ y2 }} 台灣資安競賽、CTF 比賽、資安課程與營隊、資安研討會的報名時間與截止倒數：
+          AIS3、臺灣好厲駭、金盾獎、HITCON、CYBERSEC、MyFirstCTF、全國技能競賽……一頁看完、一鍵訂閱行事曆。
         </p>
 
         <div class="stats" aria-live="polite">
@@ -184,6 +187,7 @@
               {% if conf.comment %}<p class="note">{{ conf.comment }}</p>{% endif %}
               <div class="actions">
                 <a class="btn btn-sm" href="{{ conf.link }}" target="_blank" rel="noopener">活動官網</a>
+                <a class="btn btn-sm share" href="#{{ conf_id }}" title="複製這個活動的連結">分享</a>
                 {% if deadline != "TBA" %}<a class="btn btn-sm gcal" href="#" target="_blank" rel="noopener" hidden>＋ Google 日曆</a>{% endif %}
               </div>
             </div>

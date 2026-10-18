@@ -218,6 +218,10 @@ details.past[open] summary .section-title::before { transform: rotate(45deg); }
 .note { margin: 0; font-size: 13px; color: var(--muted); line-height: 1.5; }
 .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 4px; }
 
+.card.flash { animation: flash 2.4s ease-out; }
+@keyframes flash { 0%, 30% { box-shadow: 0 0 0 3px var(--accent); } 100% { box-shadow: var(--shadow); } }
+.card { scroll-margin-top: 90px; }
+
 /* About ----------------------------------------------------------------- */
 .about { margin: 48px 0 24px; }
 .about h2 { font-size: 20px; margin: 0 0 16px; }
