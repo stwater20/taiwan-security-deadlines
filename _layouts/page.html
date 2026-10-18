@@ -1,0 +1,27 @@
+{%- assign page_title = page.title | append: "｜台灣資安活動行事曆" -%}
+{%- assign page_url = site.url | append: site.baseurl | append: page.url -%}
+<!doctype html>
+<html lang="zh-Hant-TW">
+  <head>
+    {% include head.html title=page_title url=page_url description=page.description %}
+    {% if page.noindex %}<meta name="robots" content="noindex">{% endif %}
+  </head>
+  <body>
+    <header class="hero hero-sub hero-slim">
+      <div class="wrap">
+        {% include topbar.html %}
+        <nav class="crumbs" aria-label="麵包屑"><a href="{{ site.baseurl }}/">所有活動</a><span aria-hidden="true">›</span><span>{{ page.title }}</span></nav>
+        <h1>{{ page.title }}</h1>
+        {% if page.updated %}<p class="lead">最後修訂：{{ page.updated | date: "%Y/%m/%d" }}</p>{% endif %}
+      </div>
+    </header>
+
+    <main class="wrap">
+      <article class="prose">
+        {{ content }}
+      </article>
+    </main>
+
+    {% include footer.html %}
+  </body>
+</html>

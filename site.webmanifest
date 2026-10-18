@@ -1,0 +1,18 @@
+---
+layout: null
+---
+{
+  "name": "台灣資安活動行事曆 Taiwan Security Deadlines",
+  "short_name": "資安活動倒數",
+  "description": {{ site.description | jsonify }},
+  "lang": "zh-Hant-TW",
+  "start_url": "{{ site.baseurl }}/",
+  "scope": "{{ site.baseurl }}/",
+  "display": "standalone",
+  "background_color": "#0b1220",
+  "theme_color": "#0b1220",
+  "icons": [
+    { "src": "{{ site.baseurl }}/static/img/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "{{ site.baseurl }}/static/img/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

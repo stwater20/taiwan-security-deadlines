@@ -1,0 +1,18 @@
+---
+layout: page
+title: 找不到這個頁面
+permalink: /404.html
+description: 找不到你要的頁面。
+noindex: true
+sitemap: false
+---
+<div class="err-404">
+  <p>這個頁面不存在，可能是網址打錯，或活動頁面已經搬家了。</p>
+  <p>
+    <a class="btn btn-sm" href="{{ site.baseurl }}/">回到所有活動倒數</a>
+    {%- assign all_series = site.series | sort: "order" -%}
+    {%- for s in all_series %}
+    <a class="btn btn-sm" href="{{ s.url | prepend: site.baseurl }}">{{ s.name }}</a>
+    {%- endfor %}
+  </p>
+</div>

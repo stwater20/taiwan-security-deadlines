@@ -35,6 +35,12 @@
       <time class="dl-time" {% if deadline != "TBA" %}datetime="{{ deadline | date: '%Y-%m-%dT%H:%M' }}"{% endif %}>{% if deadline == "TBA" %}尚未公布{% else %}{{ deadline | date: "%Y/%m/%d %H:%M" }}{% endif %}</time>
     </div>
     {% if conf.comment %}<p class="note">{{ conf.comment }}</p>{% endif %}
+    {%- capture report_title -%}[資料更正] {{ conf.name }} {{ conf.year }}{%- endcapture -%}
+    {%- capture report_body -%}活動：{{ conf.name }} {{ conf.year }}
+目前顯示的截止時間：{{ deadline }}
+正確資訊：
+官方公告連結：{%- endcapture %}
+    <a class="report" href="https://github.com/{{ site.github_username }}/{{ site.github_repo }}/issues/new?title={{ report_title | url_encode }}&amp;body={{ report_body | url_encode }}" target="_blank" rel="noopener nofollow">資訊有誤？回報更正</a>
     <div class="actions">
       {% if series_page %}<a class="btn btn-sm" href="{{ series_page.url | prepend: site.baseurl }}">歷年時程</a>{% endif %}
     <a class="btn btn-sm" href="{{ conf.link }}" target="_blank" rel="noopener">活動官網</a>

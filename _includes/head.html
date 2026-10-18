@@ -23,6 +23,10 @@
 <meta name="twitter:description" content="{{ include.description | default: site.description }}">
 <meta name="twitter:image" content="{{ site.url }}{{ site.baseurl }}/static/img/og.png">
 
-<link rel="icon" type="image/png" href="{{ site.baseurl }}/static/img/favicon.png">
-<link rel="apple-touch-icon" href="{{ site.baseurl }}/static/img/favicon.png">
+<link rel="icon" type="image/png" sizes="48x48" href="{{ site.baseurl }}/static/img/favicon-48.png">
+<link rel="icon" type="image/png" sizes="192x192" href="{{ site.baseurl }}/static/img/icon-192.png">
+<link rel="apple-touch-icon" href="{{ site.baseurl }}/static/img/icon-180.png">
+<link rel="manifest" href="{{ site.baseurl }}/site.webmanifest">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="preconnect" href="https://www.googletagmanager.com">
 <link rel="stylesheet" href="{{ site.baseurl }}/static/css/deadlines.css?v={{ site.time | date: '%s' }}">

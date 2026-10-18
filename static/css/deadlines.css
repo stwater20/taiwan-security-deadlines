@@ -218,6 +218,7 @@ details.past[open] summary .section-title::before { transform: rotate(45deg); }
 .dl-label { display: block; font-size: 12px; color: var(--muted); }
 .dl-time { font-weight: 600; font-variant-numeric: tabular-nums; }
 .note { margin: 0; font-size: 13px; color: var(--muted); line-height: 1.5; }
+.report { font-size: 12px; color: var(--muted); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--border); }
 .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 4px; }
 
 .card.flash { animation: flash 2.4s ease-out; }
@@ -261,6 +262,19 @@ code { font-family: var(--mono); font-size: .9em; background: var(--surface-2); 
 
 .footer { border-top: 1px solid var(--border); padding: 24px 0 40px; font-size: 13px; color: var(--muted); }
 .footer p { margin: 4px 0; }
+.footer .disclaimer { margin-bottom: 14px; line-height: 1.7; }
+.footer-links { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0 0 10px; }
+.footer-links a { text-decoration: none; color: var(--text); }
+.footer-links a:hover { text-decoration: underline; }
+.notice {
+  margin: 4px 0 0; padding: 10px 14px; font-size: 13px; color: var(--muted);
+  background: var(--surface-2); border-radius: 10px;
+}
+.notice b { color: var(--text); font-weight: 600; }
+.hero-slim { padding-bottom: 28px; }
+.prose h2:first-child { margin-top: 0; }
+.err-404 { text-align: center; padding: 40px 0 20px; }
+.err-404 .btn-sm { margin: 6px; }
 .footer a { color: inherit; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--border); }
 
 /* Responsive ------------------------------------------------------------ */

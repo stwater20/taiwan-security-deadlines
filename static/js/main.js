@@ -47,6 +47,7 @@
     tba: document.getElementById('list-tba'),
     past: document.getElementById('list-past')
   };
+  if (!lists.open) return;
 
   var items = cards.map(function (el) {
     var raw = el.getAttribute('data-deadline');

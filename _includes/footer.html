@@ -1,7 +1,14 @@
 <footer class="footer">
   <div class="wrap">
-    <p>由 <a href="https://github.com/stwater20">Sheng-Shan Chen</a> 維護・<a href="https://sectools.tw/">SecTools.tw</a> 開源資安工具共享平台・靈感來自 <a href="https://github.com/sec-deadlines/sec-deadlines.github.io">sec-deadlines</a></p>
-    <p>最後更新：<time datetime="{{ site.time | date_to_xmlschema }}">{{ site.time | date: "%Y/%m/%d" }}</time></p>
+    <p class="disclaimer"><b>免責聲明：</b>本站為社群維護的非官方整理網站，與各活動主辦單位無隸屬或合作關係。所列資訊僅供參考，不保證正確、完整或即時，報名資格、時間與規定請以主辦單位官方公告為準；因使用本站資訊所生之任何損失，本站恕不負責。<a href="{{ site.baseurl }}/disclaimer/">完整聲明</a></p>
+    <nav class="footer-links" aria-label="頁尾">
+      <a href="{{ site.baseurl }}/">所有活動</a>
+      <a href="{{ site.baseurl }}/disclaimer/">免責聲明</a>
+      <a href="{{ site.baseurl }}/privacy/">隱私權政策</a>
+      <a href="https://github.com/{{ site.github_username }}/{{ site.github_repo }}/issues/new" target="_blank" rel="noopener">回報問題</a>
+      <a href="https://github.com/{{ site.github_username }}/{{ site.github_repo }}" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+    <p>© {{ site.time | date: "%Y" }} <a href="https://sectools.tw/">SecTools.tw</a>・由 <a href="https://github.com/stwater20">Sheng-Shan Chen</a> 維護・靈感來自 <a href="https://github.com/sec-deadlines/sec-deadlines.github.io">sec-deadlines</a>・最後更新 <time datetime="{{ site.time | date_to_xmlschema }}">{{ site.time | date: "%Y/%m/%d" }}</time></p>
   </div>
 </footer>
 
