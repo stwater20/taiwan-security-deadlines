@@ -1,0 +1,45 @@
+{%- assign conf = include.conf -%}
+{%- assign i = include.i -%}
+{%- assign num_deadlines = conf.deadline.size -%}
+{%- assign prevyear = conf.year | minus: 1 -%}
+{%- assign deadline = conf.deadline[i] | replace: '%y', conf.year | replace: '%Y', prevyear -%}
+{%- assign conf_id = conf.name | append: conf.year | append: '-' | append: i | slugify -%}
+{%- assign series_page = nil -%}{%- if conf.series and include.series_links -%}{%- assign series_page = site.series | where: "key", conf.series | first -%}{%- endif -%}
+<article id="{{ conf_id }}" class="card"
+  data-deadline="{{ deadline }}" data-tz="{{ conf.timezone | default: 'Etc/GMT+12' }}"
+  data-tags="{{ conf.tags | join: ' ' }}"
+  data-title="{{ conf.name }} {{ conf.year }}{% if num_deadlines > 1 %}（截止 {{ i | plus: 1 }}/{{ num_deadlines }}）{% endif %}"
+  data-link="{{ conf.link }}" data-place="{{ conf.place }}">
+  <div class="card-main">
+    <h3><a href="{{ conf.link }}" target="_blank" rel="noopener">{{ conf.name }} <span class="yr">{{ conf.year }}</span></a></h3>
+    <p class="meta">
+      <span class="when">
+        {%- if conf.start -%}
+          {{ conf.start | date: "%Y/%m/%d" }}{% if conf.end and conf.end != conf.start %} – {{ conf.end | date: "%m/%d" }}{% endif %}
+        {%- else -%}{{ conf.date }}{%- endif -%}
+      </span>
+      {% if conf.place %}<span class="where"><a href="https://maps.google.com/?q={{ conf.place | url_encode }}" target="_blank" rel="noopener">{{ conf.place }}</a></span>{% endif %}
+    </p>
+    <p class="desc">{{ conf.description }}</p>
+    <p class="tags">
+      {%- for tag in conf.tags -%}
+      {%- assign t = site.data.types | where: "tag", tag | first -%}
+      <span class="tag tag-{{ tag | downcase }}">{{ t.name | default: tag }}</span>
+      {%- endfor -%}
+    </p>
+  </div>
+  <div class="card-side">
+    <div class="countdown" aria-label="倒數"><span class="cd-num">{% if deadline == "TBA" %}TBA{% endif %}</span><span class="cd-unit"></span></div>
+    <div class="deadline">
+      <span class="dl-label">{% if num_deadlines > 1 %}截止 {{ i | plus: 1 }}/{{ num_deadlines }}{% else %}報名截止{% endif %}</span>
+      <time class="dl-time" {% if deadline != "TBA" %}datetime="{{ deadline | date: '%Y-%m-%dT%H:%M' }}"{% endif %}>{% if deadline == "TBA" %}尚未公布{% else %}{{ deadline | date: "%Y/%m/%d %H:%M" }}{% endif %}</time>
+    </div>
+    {% if conf.comment %}<p class="note">{{ conf.comment }}</p>{% endif %}
+    <div class="actions">
+      {% if series_page %}<a class="btn btn-sm" href="{{ series_page.url | prepend: site.baseurl }}">歷年時程</a>{% endif %}
+    <a class="btn btn-sm" href="{{ conf.link }}" target="_blank" rel="noopener">活動官網</a>
+      <a class="btn btn-sm share" href="#{{ conf_id }}" title="複製這個活動的連結">分享</a>
+      {% if deadline != "TBA" %}<a class="btn btn-sm gcal" href="#" target="_blank" rel="noopener" hidden>＋ Google 日曆</a>{% endif %}
+    </div>
+  </div>
+</article>

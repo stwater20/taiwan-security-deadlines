@@ -17,6 +17,17 @@ markdown: kramdown
 plugins:
   - jekyll-sitemap
 
+collections:
+  series:
+    output: true
+    permalink: /events/:name/
+
+defaults:
+  - scope:
+      type: series
+    values:
+      layout: series
+
 exclude:
   - README.md
   - LICENSE

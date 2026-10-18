@@ -1,0 +1,10 @@
+<footer class="footer">
+  <div class="wrap">
+    <p>由 <a href="https://github.com/stwater20">Sheng-Shan Chen</a> 維護・<a href="https://sectools.tw/">SecTools.tw</a> 開源資安工具共享平台・靈感來自 <a href="https://github.com/sec-deadlines/sec-deadlines.github.io">sec-deadlines</a></p>
+    <p>最後更新：<time datetime="{{ site.time | date_to_xmlschema }}">{{ site.time | date: "%Y/%m/%d" }}</time></p>
+  </div>
+</footer>
+
+<script>window.SITE_DOMAIN = {{ site.domain | jsonify }};</script>
+<script src="{{ site.baseurl }}/static/js/main.js?v={{ site.time | date: '%s' }}" defer></script>
+{% if site.ga_id %}{% include analytics.html %}{% endif %}

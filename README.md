@@ -63,6 +63,7 @@
 | `description` |  | 活動簡介 |
 | `comment` |  | 補充說明，例如多個 deadline 各代表什麼 |
 | `place` |  | 地點 |
+| `series` |  | 所屬活動系列，對應 [`_series/`](_series) 底下的介紹頁（例如 `ais3`、`golden-shield`），會出現在 `/events/<series>/` 頁面 |
 | `tags` |  | `EDU`（教育活動）、`ONLINE`（線上）、`ONSITE`（實體），定義在 [`_data/types.yml`](_data/types.yml) |
 
 ### Deadline 格式細節

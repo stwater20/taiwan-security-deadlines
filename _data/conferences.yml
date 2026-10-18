@@ -1,9 +1,11 @@
 ---
 # 新增／更新活動請見 README「如何貢獻」。
+# series 對應 _series/ 底下的活動介紹頁（選填）。
 # start / end（YYYY-MM-DD）為選填，有填會用來顯示活動日期並產生 Google 活動結構化資料。
 # 報名時間尚未公布的活動，deadline 請填 "TBA"。
 
 - name: HITCON Cyber Range × CTF 探索日
+  series: hitcon
   year: 2026
   date: Nov 7 - Nov 8
   start: 2026-11-07
@@ -18,6 +20,7 @@
   tags: [EDU, ONSITE]
 
 - name: AIS3 EOF CTF
+  series: ais3-eof-ctf
   year: 2027
   date: 初賽 2026 年 12 月（線上）、決賽 2027 年初（實體）
   description: 教育部跨領域資通訊安全人才培育計畫主辦的 AIS3 EOF 資安搶旗競賽，以 4 人一隊報名，限學生參加。前三名可直接通過 AIS3 好厲駭初選。
@@ -30,6 +33,7 @@
   tags: [EDU, ONLINE, ONSITE]
 
 - name: 全國技能競賽（第57屆）網路安全職類
+  series: skills-competition
   year: 2027
   date: 分區賽約 2027 年 3 月
   description: 勞動部勞動力發展署技能檢定中心主辦，青年組設有「網路安全」職類，分區賽優勝者可晉級全國賽並爭取國手資格。
@@ -42,6 +46,7 @@
   tags: [EDU, ONSITE]
 
 - name: SITCON 學生計算機年會
+  series: sitcon
   year: 2027
   date: Mar 13
   start: 2027-03-13
@@ -56,6 +61,7 @@
   tags: [EDU, ONSITE]
 
 - name: CYBERSEC 臺灣資安大會
+  series: cybersec
   year: 2027
   date: May 4 - May 6
   start: 2027-05-04
@@ -70,6 +76,7 @@
   tags: [EDU, ONSITE]
 
 - name: 資安技能金盾獎（第21屆）
+  series: golden-shield
   year: 2026
   date: 初賽 Oct 17、決賽 Nov 27
   start: 2026-10-17
@@ -84,6 +91,7 @@
   tags: [EDU, ONSITE]
 
 - name: 臺灣好厲駭 (TaiwanHolyHigh)
+  series: taiwan-holyhigh
   year: 2026
   date: Sep 2026 - Aug 2027
   start: 2026-09-01
@@ -97,6 +105,7 @@
   tags: [EDU, ONSITE, ONLINE]
 
 - name: HITCON
+  series: hitcon
   year: 2026
   date: Aug 21 - Aug 22
   start: 2026-08-21
@@ -111,6 +120,7 @@
   tags: [EDU, ONSITE]
 
 - name: AIS3 新型態資安暑期課程
+  series: ais3
   year: 2026
   date: Jul 20 - Jul 26
   start: 2026-07-20
@@ -126,6 +136,7 @@
   tags: [EDU, ONSITE]
 
 - name: AIS3 Junior 新型態高中職資安課程
+  series: ais3-junior
   year: 2026
   date: Aug 4 - Aug 7
   start: 2026-08-04
@@ -139,6 +150,7 @@
   tags: [EDU, ONSITE]
 
 - name: 初階資安攻防演練(AIS3 MyFirstCTF)
+  series: myfirstctf
   year: 2026
   date: May 16 09:30 - May 16 17:30
   start: 2026-05-16
@@ -152,6 +164,7 @@
   tags: [EDU, ONSITE]
 
 - name: CYBERSEC 臺灣資安大會
+  series: cybersec
   year: 2026
   date: May 5 - May 7
   start: 2026-05-05
@@ -165,6 +178,7 @@
   tags: [EDU, ONSITE]
 
 - name: 全國技能競賽（第56屆）網路安全職類
+  series: skills-competition
   year: 2026
   date: 分區賽 Mar 23 - Mar 28
   start: 2026-03-23
@@ -179,6 +193,7 @@
   tags: [EDU, ONSITE]
 
 - name: AIS3 EOF CTF
+  series: ais3-eof-ctf
   year: 2026
   date: 初賽 Dec 20 - Dec 22 2025、決賽 Jan 31 - Feb 1
   start: 2025-12-20
@@ -192,6 +207,7 @@
   tags: [EDU, ONLINE, ONSITE]
 
 - name: AIS3 Pre-exam
+  series: ais3
   year: 2025
   date: May 24 - May 26
   start: 2025-05-24
@@ -205,6 +221,7 @@
   tags: [EDU, ONLINE]
 
 - name: CYBERSEC 臺灣資安大會
+  series: cybersec
   year: 2025
   date: Apr 15 - Apr 17
   start: 2025-04-15
@@ -218,6 +235,7 @@
   tags: [EDU, ONSITE]
 
 - name: 臺灣好厲駭 (TaiwanHolyHigh)
+  series: taiwan-holyhigh
   year: 2024
   date: Aug 19 2024 - Jul 31 2025
   start: 2024-08-19
@@ -231,6 +249,7 @@
   tags: [EDU, ONSITE, ONLINE]
 
 - name: AIS3 新型態資安暑期課程
+  series: ais3
   year: 2024
   date: Jul 29 - Aug 4
   start: 2024-07-29
@@ -244,6 +263,7 @@
   tags: [EDU, ONSITE]
 
 - name: AIS3 Junior 新型態高中職資安課程
+  series: ais3-junior
   year: 2024
   date: Aug 15 - Aug 18
   start: 2024-08-15
@@ -257,6 +277,7 @@
   tags: [EDU, ONSITE]
 
 - name: 初階資安攻防演練(AIS3 MyFirstCTF)
+  series: myfirstctf
   year: 2024
   date: May 25 09:30 - May 25 17:30
   start: 2024-05-25
@@ -283,6 +304,7 @@
   tags: [EDU, ONLINE, ONSITE]
 
 - name: 全國技能競賽（第54屆）
+  series: skills-competition
   year: 2024
   date: Jul 17 - Jul 21
   start: 2024-07-17

@@ -7,34 +7,7 @@
 <!doctype html>
 <html lang="zh-Hant-TW">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ page_title }}</title>
-    <meta name="description" content="{{ site.description }}">
-    <meta name="author" content="{{ site.author }}">
-    <meta name="theme-color" content="#0b1220">
-    <link rel="canonical" href="{{ page_url }}">
-    <link rel="alternate" type="text/calendar" title="台灣資安活動截止日 (iCal)" href="{{ site.baseurl }}/ical/deadlines-all.ical">
-
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Taiwan Security Deadlines">
-    <meta property="og:title" content="{{ page_title }}">
-    <meta property="og:description" content="{{ site.description }}">
-    <meta property="og:url" content="{{ page_url }}">
-    <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/static/img/og.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="台灣資安競賽・課程報名時間總整理">
-    <meta property="og:locale" content="zh_TW">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@{{ site.twitter_username }}">
-    <meta name="twitter:title" content="{{ page_title }}">
-    <meta name="twitter:description" content="{{ site.description }}">
-    <meta name="twitter:image" content="{{ site.url }}{{ site.baseurl }}/static/img/og.png">
-
-    <link rel="icon" type="image/png" href="{{ site.baseurl }}/static/img/favicon.png">
-    <link rel="apple-touch-icon" href="{{ site.baseurl }}/static/img/favicon.png">
-    <link rel="stylesheet" href="{{ site.baseurl }}/static/css/deadlines.css?v={{ site.time | date: '%s' }}">
+    {% include head.html title=page_title url=page_url %}
 
     <script type="application/ld+json">
     {
@@ -62,24 +35,7 @@
             {
               "@type": "ListItem",
               "position": {{ n }},
-              "item": {
-                "@type": "Event",
-                "name": {{ conf.name | append: " " | append: conf.year | jsonify }},
-                "description": {{ conf.description | strip | jsonify }},
-                "url": {{ conf.link | jsonify }},
-                "startDate": "{{ conf.start | date: '%Y-%m-%d' }}",
-                "endDate": "{{ conf.end | default: conf.start | date: '%Y-%m-%d' }}",
-                "eventStatus": "https://schema.org/EventScheduled",
-                {%- assign onsite = false -%}{%- if conf.tags contains "ONSITE" -%}{%- assign onsite = true -%}{%- endif -%}
-                {%- assign online = false -%}{%- if conf.tags contains "ONLINE" -%}{%- assign online = true -%}{%- endif -%}
-                "eventAttendanceMode": "https://schema.org/{% if onsite and online %}MixedEventAttendanceMode{% elsif online %}OnlineEventAttendanceMode{% else %}OfflineEventAttendanceMode{% endif %}",
-                "location": {% if onsite or online == false %}{
-                  "@type": "Place",
-                  "name": {{ conf.place | default: "Taiwan" | jsonify }},
-                  "address": { "@type": "PostalAddress", "addressLocality": {{ conf.place | default: "Taiwan" | split: "," | first | strip | jsonify }}, "addressCountry": "TW" }
-                }{% else %}{ "@type": "VirtualLocation", "url": {{ conf.link | jsonify }} }{% endif %},
-                "inLanguage": "zh-Hant-TW"
-              }
+              "item": {% include event-jsonld.html conf=conf %}
             }
             {%- endif -%}
             {%- endfor %}
@@ -94,16 +50,7 @@
 
     <header class="hero">
       <div class="wrap">
-        <nav class="topbar" aria-label="網站">
-          <a class="brand" href="{{ site.baseurl }}/">
-            <img src="{{ site.baseurl }}/static/img/favicon.png" alt="" width="28" height="28">
-            <span>Taiwan Security Deadlines</span>
-          </a>
-          <a class="gh" href="https://github.com/{{ site.github_username }}/{{ site.github_repo }}" target="_blank" rel="noopener">
-            <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-            GitHub
-          </a>
-        </nav>
+        {% include topbar.html %}
 
         <h1>台灣資安競賽・課程<br class="br-sm">報名時間總整理</h1>
         <p class="lead">
@@ -149,49 +96,9 @@
         <h2 id="h-open" class="section-title">報名中・即將舉行</h2>
         <div class="list" id="list-open">
         {%- for conf in site.data.conferences -%}
-        {%- assign num_deadlines = conf.deadline.size -%}
-        {%- assign range_end = num_deadlines | minus: 1 -%}
+        {%- assign range_end = conf.deadline.size | minus: 1 -%}
         {%- for i in (0..range_end) -%}
-        {%- assign prevyear = conf.year | minus: 1 -%}
-        {%- assign deadline = conf.deadline[i] | replace: '%y', conf.year | replace: '%Y', prevyear -%}
-        {%- assign conf_id = conf.name | append: conf.year | append: '-' | append: i | slugify -%}
-          <article id="{{ conf_id }}" class="card"
-            data-deadline="{{ deadline }}" data-tz="{{ conf.timezone | default: 'Etc/GMT+12' }}"
-            data-tags="{{ conf.tags | join: ' ' }}"
-            data-title="{{ conf.name }} {{ conf.year }}{% if num_deadlines > 1 %}（截止 {{ i | plus: 1 }}/{{ num_deadlines }}）{% endif %}"
-            data-link="{{ conf.link }}" data-place="{{ conf.place }}">
-            <div class="card-main">
-              <h3><a href="{{ conf.link }}" target="_blank" rel="noopener">{{ conf.name }} <span class="yr">{{ conf.year }}</span></a></h3>
-              <p class="meta">
-                <span class="when">
-                  {%- if conf.start -%}
-                    {{ conf.start | date: "%Y/%m/%d" }}{% if conf.end and conf.end != conf.start %} – {{ conf.end | date: "%m/%d" }}{% endif %}
-                  {%- else -%}{{ conf.date }}{%- endif -%}
-                </span>
-                {% if conf.place %}<span class="where"><a href="https://maps.google.com/?q={{ conf.place | url_encode }}" target="_blank" rel="noopener">{{ conf.place }}</a></span>{% endif %}
-              </p>
-              <p class="desc">{{ conf.description }}</p>
-              <p class="tags">
-                {%- for tag in conf.tags -%}
-                {%- assign t = site.data.types | where: "tag", tag | first -%}
-                <span class="tag tag-{{ tag | downcase }}">{{ t.name | default: tag }}</span>
-                {%- endfor -%}
-              </p>
-            </div>
-            <div class="card-side">
-              <div class="countdown" aria-label="倒數"><span class="cd-num">{% if deadline == "TBA" %}TBA{% endif %}</span><span class="cd-unit"></span></div>
-              <div class="deadline">
-                <span class="dl-label">{% if num_deadlines > 1 %}截止 {{ i | plus: 1 }}/{{ num_deadlines }}{% else %}報名截止{% endif %}</span>
-                <time class="dl-time" {% if deadline != "TBA" %}datetime="{{ deadline | date: '%Y-%m-%dT%H:%M' }}"{% endif %}>{% if deadline == "TBA" %}尚未公布{% else %}{{ deadline | date: "%Y/%m/%d %H:%M" }}{% endif %}</time>
-              </div>
-              {% if conf.comment %}<p class="note">{{ conf.comment }}</p>{% endif %}
-              <div class="actions">
-                <a class="btn btn-sm" href="{{ conf.link }}" target="_blank" rel="noopener">活動官網</a>
-                <a class="btn btn-sm share" href="#{{ conf_id }}" title="複製這個活動的連結">分享</a>
-                {% if deadline != "TBA" %}<a class="btn btn-sm gcal" href="#" target="_blank" rel="noopener" hidden>＋ Google 日曆</a>{% endif %}
-              </div>
-            </div>
-          </article>
+          {% include card.html conf=conf i=i series_links=true %}
         {%- endfor -%}
         {%- endfor -%}
         </div>
@@ -208,6 +115,16 @@
         <summary><h2 class="section-title">已截止 <small id="past-count"></small></h2></summary>
         <div class="list" id="list-past"></div>
       </details>
+
+      <section class="series-index" aria-labelledby="h-series">
+        <h2 id="h-series" class="section-title">活動介紹與歷年報名時程</h2>
+        <ul class="series-grid">
+          {%- assign all_series = site.series | sort: "order" -%}
+          {%- for s in all_series %}
+          <li><a href="{{ s.url | prepend: site.baseurl }}"><b>{{ s.name }}</b><span>{{ s.kind }}</span></a></li>
+          {%- endfor %}
+        </ul>
+      </section>
 
       <section class="about" aria-labelledby="h-about">
         <h2 id="h-about">關於這個網站</h2>
@@ -232,15 +149,6 @@
       </section>
     </main>
 
-    <footer class="footer">
-      <div class="wrap">
-        <p>由 <a href="https://github.com/stwater20">Sheng-Shan Chen</a> 維護・<a href="https://sectools.tw/">SecTools.tw</a> 開源資安工具共享平台・靈感來自 <a href="https://github.com/sec-deadlines/sec-deadlines.github.io">sec-deadlines</a></p>
-        <p>最後更新：<time datetime="{{ site.time | date_to_xmlschema }}">{{ site.time | date: "%Y/%m/%d" }}</time></p>
-      </div>
-    </footer>
-
-    <script>window.SITE_DOMAIN = {{ site.domain | jsonify }};</script>
-    <script src="{{ site.baseurl }}/static/js/main.js?v={{ site.time | date: '%s' }}" defer></script>
-    {% if site.ga_id %}{% include analytics.html %}{% endif %}
+    {% include footer.html %}
   </body>
 </html>

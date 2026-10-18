@@ -99,6 +99,7 @@
     });
 
     var next = groups.open[0];
+    if (!document.getElementById('stat-open')) return groups;
     document.getElementById('stat-open').textContent = groups.open.length;
     if (next) {
       var days = Math.floor((next.deadline - now) / DAY);
@@ -139,7 +140,9 @@
   var q = document.getElementById('q');
   var chips = Array.prototype.slice.call(document.querySelectorAll('.chip'));
   var active = [];
-  try { active = JSON.parse(localStorage.getItem(STORE_KEY)) || []; } catch (e) { active = []; }
+  if (chips.length) {
+    try { active = JSON.parse(localStorage.getItem(STORE_KEY)) || []; } catch (e) { active = []; }
+  }
   chips.forEach(function (c) {
     var tag = c.getAttribute('data-tag');
     c.setAttribute('aria-pressed', active.indexOf(tag) >= 0 ? 'true' : 'false');
@@ -151,10 +154,10 @@
       filter();
     });
   });
-  q.addEventListener('input', filter);
+  if (q) q.addEventListener('input', filter);
 
   function filter() {
-    var terms = q.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+    var terms = (q ? q.value : '').trim().toLowerCase().split(/\s+/).filter(Boolean);
     var counts = { open: 0, tba: 0, past: 0 };
     items.forEach(function (it) {
       var ok = active.every(function (t) { return it.tags.indexOf(t) >= 0; }) &&
@@ -194,7 +197,7 @@
     var id = decodeURIComponent(location.hash.slice(1));
     var card = id && document.getElementById(id);
     if (!card || !card.classList.contains('card')) return;
-    if (card.hidden) { q.value = ''; active = []; chips.forEach(function (c) { c.setAttribute('aria-pressed', 'false'); }); filter(); }
+    if (card.hidden) { if (q) q.value = ''; active = []; chips.forEach(function (c) { c.setAttribute('aria-pressed', 'false'); }); filter(); }
     var past = document.getElementById('sec-past');
     if (past.contains(card)) past.open = true;
     card.classList.add('flash');

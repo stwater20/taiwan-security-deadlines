@@ -1,0 +1,18 @@
+{
+"@type": "Event",
+  "name": {{ include.conf.name | append: " " | append: include.conf.year | jsonify }},
+  "description": {{ include.conf.description | strip | jsonify }},
+  "url": {{ include.conf.link | jsonify }},
+  "startDate": "{{ include.conf.start | date: '%Y-%m-%d' }}",
+  "endDate": "{{ include.conf.end | default: include.conf.start | date: '%Y-%m-%d' }}",
+  "eventStatus": "https://schema.org/EventScheduled",
+  {%- assign onsite = false -%}{%- if include.conf.tags contains "ONSITE" -%}{%- assign onsite = true -%}{%- endif -%}
+  {%- assign online = false -%}{%- if include.conf.tags contains "ONLINE" -%}{%- assign online = true -%}{%- endif -%}
+  "eventAttendanceMode": "https://schema.org/{% if onsite and online %}MixedEventAttendanceMode{% elsif online %}OnlineEventAttendanceMode{% else %}OfflineEventAttendanceMode{% endif %}",
+  "location": {% if onsite or online == false %}{
+    "@type": "Place",
+    "name": {{ include.conf.place | default: "Taiwan" | jsonify }},
+    "address": { "@type": "PostalAddress", "addressLocality": {{ include.conf.place | default: "Taiwan" | split: "," | first | strip | jsonify }}, "addressCountry": "TW" }
+  }{% else %}{ "@type": "VirtualLocation", "url": {{ include.conf.link | jsonify }} }{% endif %},
+  "inLanguage": "zh-Hant-TW"
+}
