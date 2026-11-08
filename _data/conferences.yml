@@ -24,7 +24,7 @@
   year: 2027
   date: 初賽 2026 年 12 月（線上）、決賽 2027 年初（實體）
   description: 教育部跨領域資通訊安全人才培育計畫主辦的 AIS3 EOF 資安搶旗競賽，以 4 人一隊報名，限學生參加。前三名可直接通過 AIS3 好厲駭初選。
-  comment: 尚未公告。往年約 11 月底開放報名、12 月中截止，公告後更新
+  comment: 截至 11/8 尚未公告。往年約 11 月底開放報名、12 月中截止，公告後更新
   link: https://ais3.org/eof/
   deadline:
     - "TBA"
@@ -35,10 +35,38 @@
 - name: 全國技能競賽（第57屆）網路安全職類
   series: skills-competition
   year: 2027
-  date: 分區賽約 2027 年 3 月
-  description: 勞動部勞動力發展署技能檢定中心主辦，青年組設有「網路安全」職類，分區賽優勝者可晉級全國賽並爭取國手資格。
-  comment: 尚未公告。上屆分區賽網路報名為 114/12/8–12/17
+  date: 分區賽青年組 Mar 25 - Mar 27
+  start: 2027-03-25
+  end: 2027-03-27
+  description: 勞動部勞動力發展署技能檢定中心主辦，青年組設有「網路安全」職類。第57屆分區技能競賽 116 年 3 月分區舉行，青少年組 3/22–3/24、青年組 3/25–3/27，優勝者晉級全國賽並爭取國手資格。
+  comment: 網路報名 11/24 09:00 起。南區至 12/7 中午 12:00、北區至 12/7 24:00（此處以較早者倒數）；書面資料須於 12/8 前寄出（郵戳為憑）
   link: https://www.wdasec.gov.tw/
+  deadline:
+    - "2026-12-07 12:00"
+  timezone: Asia/Taipei
+  place: Taiwan
+  tags: [EDU, ONSITE]
+
+- name: AIS3 新型態資安暑期課程
+  series: ais3
+  year: 2027
+  date: 2027 年 7–8 月（預估）
+  description: 教育部資安人才培育計畫的暑期密集課程，需先通過 Pre-exam 線上甄選。
+  comment: 尚未公告。往年約 5 月舉行 Pre-exam、5 月底截止甄選報名，公告後更新
+  link: https://ais3.org/
+  deadline:
+    - "TBA"
+  timezone: Asia/Taipei
+  place: Taiwan
+  tags: [EDU, ONSITE]
+
+- name: 初階資安攻防演練(AIS3 MyFirstCTF)
+  series: myfirstctf
+  year: 2027
+  date: 2027 年 5 月（預估，與 AIS3 Pre-exam 同時舉行）
+  description: 專為新手設計的初階 CTF 競賽，與 AIS3 Pre-exam 同場辦理，適合第一次參加資安競賽的學生。
+  comment: 尚未公告。往年約 4 月中下旬截止報名，公告後更新
+  link: https://ais3.org/mfctf/
   deadline:
     - "TBA"
   timezone: Asia/Taipei
