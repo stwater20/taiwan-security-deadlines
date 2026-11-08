@@ -2,6 +2,7 @@
 key: "ais3-junior"
 name: "AIS3 Junior 高中職資安課程"
 kind: "資安課程・高中職營隊"
+category: "camps"
 order: 2
 organizer: "教育部跨領域資通訊安全人才培育計畫"
 audience: "高中職學生"

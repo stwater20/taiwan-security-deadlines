@@ -1,0 +1,9 @@
+<section class="series-index" aria-labelledby="h-cats">
+  <h2 id="h-cats" class="section-title">依類型瀏覽</h2>
+  <ul class="series-grid">
+    {%- for c in site.data.categories -%}{%- if c.key != include.current %}
+    <li><a href="{{ c.url | prepend: site.baseurl }}"><b>{{ c.name }}</b><span>{{ site.time | date: "%Y" }} 報名時間總整理</span></a></li>
+    {%- endif -%}{%- endfor %}
+    <li><a href="{{ site.baseurl }}/"><b>所有活動倒數 →</b><span>台灣資安活動行事曆</span></a></li>
+  </ul>
+</section>

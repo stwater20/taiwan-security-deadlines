@@ -2,6 +2,7 @@
 key: "myfirstctf"
 name: "AIS3 MyFirstCTF 初階資安攻防演練"
 kind: "CTF 競賽・新手"
+category: "ctf"
 order: 4
 organizer: "教育部跨領域資通訊安全人才培育計畫"
 audience: "學生，適合第一次接觸 CTF 的新手"

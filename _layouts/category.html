@@ -1,0 +1,109 @@
+{%- assign y1 = site.time | date: "%Y" -%}
+{%- assign y2 = y1 | plus: 1 -%}
+{%- assign page_title = y1 | append: "–" | append: y2 | append: " " | append: page.title | append: "｜台灣資安活動行事曆" -%}
+{%- assign page_url = site.url | append: site.baseurl | append: page.url -%}
+{%- assign home_url = site.url | append: site.baseurl | append: "/" -%}
+{%- assign cat_series = site.series | where: "category", page.category | sort: "order" -%}
+{%- assign keys = cat_series | map: "key" | join: "," | split: "," -%}
+<!doctype html>
+<html lang="zh-Hant-TW">
+  <head>
+    {% include head.html title=page_title url=page_url description=page.description %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "台灣資安活動行事曆", "item": "{{ home_url }}" },
+            { "@type": "ListItem", "position": 2, "name": {{ page.title | jsonify }}, "item": "{{ page_url }}" }
+          ]
+        },
+        {
+          "@type": "CollectionPage",
+          "name": {{ page_title | jsonify }},
+          "url": "{{ page_url }}",
+          "description": {{ page.description | jsonify }},
+          "inLanguage": "zh-Hant-TW",
+          "hasPart": [
+            {%- for s in cat_series -%}
+            {%- unless forloop.first %},{% endunless %}
+            { "@type": "WebPage", "name": {{ s.name | jsonify }}, "url": "{{ site.url }}{{ site.baseurl }}{{ s.url }}" }
+            {%- endfor %}
+          ]
+        }
+        {%- for conf in site.data.conferences -%}{%- if conf.start and keys contains conf.series -%},
+        {% include event-jsonld.html conf=conf %}
+        {%- endif -%}{%- endfor %}
+      ]
+    }
+    </script>
+  </head>
+  <body>
+    <a class="skip" href="#list">跳到活動列表</a>
+
+    <header class="hero hero-sub">
+      <div class="wrap">
+        {% include topbar.html %}
+        <nav class="crumbs" aria-label="麵包屑"><a href="{{ site.baseurl }}/">所有活動</a><span aria-hidden="true">›</span><span>{{ page.title }}</span></nav>
+        <h1>{{ y1 }}–{{ y2 }} {{ page.h1 }}</h1>
+        <p class="lead">{{ page.lead }}</p>
+        <div class="subscribe">
+          <a class="btn btn-primary" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?cid=webcal%3A%2F%2F{{ site.domain }}%2Fical%2Fdeadlines-all.ical">
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V6a2 2 0 00-2-2zm0 16H5V9h14v11z"/></svg>
+            訂閱所有截止日到 Google 日曆
+          </a>
+          <a class="btn" href="webcal://{{ site.domain }}/ical/deadlines-all.ical">Apple / Outlook 日曆</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="list" class="wrap">
+      <p class="notice" role="note">ⓘ 資訊整理自各主辦單位公開資料，僅供參考；報名前請以<b>主辦單位官方公告</b>為準。<a href="{{ site.baseurl }}/disclaimer/">免責聲明</a></p>
+
+      <section aria-labelledby="h-open">
+        <h2 id="h-open" class="section-title">報名中・即將舉行</h2>
+        <div class="list" id="list-open">
+        {%- for conf in site.data.conferences -%}
+        {%- if keys contains conf.series -%}
+        {%- assign range_end = conf.deadline.size | minus: 1 -%}
+        {%- for i in (0..range_end) -%}
+          {% include card.html conf=conf i=i series_links=true %}
+        {%- endfor -%}
+        {%- endif -%}
+        {%- endfor -%}
+        </div>
+      </section>
+
+      <section aria-labelledby="h-tba" id="sec-tba">
+        <h2 id="h-tba" class="section-title">時程未公布 <small>依往年慣例預告，公告後更新</small></h2>
+        <div class="list" id="list-tba"></div>
+      </section>
+
+      <p class="empty" id="empty" hidden>目前沒有這類活動的資料。</p>
+
+      <details class="past" id="sec-past">
+        <summary><h2 class="section-title">已截止 <small id="past-count"></small></h2></summary>
+        <div class="list" id="list-past"></div>
+      </details>
+
+      <section class="series-index" aria-labelledby="h-series">
+        <h2 id="h-series" class="section-title">{{ page.title }}一覽</h2>
+        <ul class="series-grid">
+          {%- for s in cat_series %}
+          <li><a href="{{ s.url | prepend: site.baseurl }}"><b>{{ s.name }}</b><span>{{ s.schedule }}</span></a></li>
+          {%- endfor %}
+        </ul>
+      </section>
+
+      <article class="prose">
+        {{ content }}
+      </article>
+
+      {% include category-nav.html current=page.category %}
+    </main>
+
+    {% include footer.html %}
+  </body>
+</html>

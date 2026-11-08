@@ -2,6 +2,7 @@
 key: "ais3"
 name: "AIS3 新型態資安暑期課程"
 kind: "資安課程・暑期營隊"
+category: "camps"
 order: 1
 organizer: "教育部跨領域資通訊安全人才培育計畫"
 audience: "以大專校院學生為主，需通過 Pre-exam 甄選"

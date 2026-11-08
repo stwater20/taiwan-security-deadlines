@@ -2,6 +2,7 @@
 key: "ais3-eof-ctf"
 name: "AIS3 EOF CTF"
 kind: "CTF 競賽"
+category: "ctf"
 order: 3
 organizer: "教育部跨領域資通訊安全人才培育計畫"
 audience: "學生，4 人一隊報名"

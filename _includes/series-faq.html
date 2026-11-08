@@ -1,0 +1,34 @@
+{%- assign latest = include.latest -%}
+{%- capture q1 -%}{{ page.name }} {{ latest.year }} 什麼時候報名？{%- endcapture -%}
+{%- capture a1 -%}
+{%- if latest.deadline[0] == "TBA" -%}{{ page.name }} {{ latest.year }} 的報名時間尚未公布。{% if page.schedule %}依往年時程，大約是{{ page.schedule }}。{% endif %}正式公告後本頁會立即更新倒數。
+{%- else -%}{{ page.name }} {{ latest.year }} 的報名截止時間為{% for d in latest.deadline %}{% unless forloop.first %}、{% endunless %} {{ d | date: "%Y/%m/%d %H:%M" }}{% endfor %}（{% if latest.timezone == "Asia/Taipei" %}台北時間{% else %}{{ latest.timezone | default: "AoE" }}{% endif %}）。{% if latest.comment %}{{ latest.comment }}。{% endif %}
+{%- endif -%}
+{%- endcapture -%}
+{%- capture q2 -%}{{ page.name }} 適合誰參加？{%- endcapture -%}
+{%- capture a2 -%}參加對象：{{ page.audience }}。實際資格限制請以主辦單位簡章為準。{%- endcapture -%}
+{%- capture q3 -%}{{ page.name }} 由誰主辦？{%- endcapture -%}
+{%- capture a3 -%}{{ page.name }} 由{{ page.organizer }}主辦，官方網站為 {{ page.official }}。{%- endcapture -%}
+{%- capture q4 -%}怎麼樣才不會錯過 {{ page.name }} 的報名？{%- endcapture -%}
+{%- capture a4 -%}可以訂閱本站的 Google 日曆或 Apple / Outlook 日曆，{{ page.name }} 與其他台灣資安活動的報名截止日都會自動出現在你的行事曆中。{%- endcapture -%}
+<section class="about" aria-labelledby="h-faq">
+  <h2 id="h-faq">常見問題</h2>
+  <div class="faq">
+    <div><h3>{{ q1 }}</h3><p>{{ a1 }}</p></div>
+    {% if page.audience %}<div><h3>{{ q2 }}</h3><p>{{ a2 }}</p></div>{% endif %}
+    {% if page.organizer %}<div><h3>{{ q3 }}</h3><p>{{ a3 }}</p></div>{% endif %}
+    <div><h3>{{ q4 }}</h3><p>{{ a4 }}</p></div>
+  </div>
+</section>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": {{ q1 | jsonify }}, "acceptedAnswer": { "@type": "Answer", "text": {{ a1 | strip | jsonify }} } },
+    {% if page.audience %}{ "@type": "Question", "name": {{ q2 | jsonify }}, "acceptedAnswer": { "@type": "Answer", "text": {{ a2 | jsonify }} } },{% endif %}
+    {% if page.organizer %}{ "@type": "Question", "name": {{ q3 | jsonify }}, "acceptedAnswer": { "@type": "Answer", "text": {{ a3 | jsonify }} } },{% endif %}
+    { "@type": "Question", "name": {{ q4 | jsonify }}, "acceptedAnswer": { "@type": "Answer", "text": {{ a4 | jsonify }} } }
+  ]
+}
+</script>

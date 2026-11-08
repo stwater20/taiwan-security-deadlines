@@ -4,6 +4,34 @@
 # start / end（YYYY-MM-DD）為選填，有填會用來顯示活動日期並產生 Google 活動結構化資料。
 # 報名時間尚未公布的活動，deadline 請填 "TBA"。
 
+- name: TeamT5 Security Camp 資安培訓營
+  series: teamt5-camp
+  year: 2027
+  date: Jan 19 - Jan 22、Jan 29
+  start: 2027-01-19
+  end: 2027-01-29
+  description: 資安公司 TeamT5 杜浦數位安全舉辦的第七屆免費資安培訓營，對象為具資安基礎的國內大專院校與碩士在學生，需先索取並繳交入營題目作答。課程免費、提供午餐，需繳 NT$1,000 保證金（全勤退還）。
+  comment: 入營題目作答 11/30 截止（官網未註明時間，以 23:59 倒數）；12/18 寄發錄取通知
+  link: https://teamt5.org/tw/events/teamt5-security-camp-2027-info
+  deadline:
+    - "2026-11-30 23:59"
+  timezone: Asia/Taipei
+  place: Taipei, Taiwan
+  tags: [EDU, ONSITE]
+
+- name: THJCC CTF 臺灣高中職聯合資安競賽
+  series: thjcc
+  year: 2027
+  date: 2027 年 2 月（預估）
+  description: 由高中生資訊社群 SCINT、SCIST 等共同舉辦的新手友善線上 CTF，題型涵蓋 Web、Reverse、Crypto、Pwn、Misc，限台灣高中職學生參加競獎。
+  comment: 尚未公告。上屆冬季賽 1/22 截止報名、2 月比賽，公告後更新
+  link: https://thjcc.org/
+  deadline:
+    - "TBA"
+  timezone: Asia/Taipei
+  place: Online
+  tags: [EDU, ONLINE]
+
 - name: HITCON Cyber Range × CTF 探索日
   series: hitcon
   year: 2026
@@ -344,3 +372,32 @@
   timezone: Asia/Taipei
   place: Taiwan
   tags: [EDU, ONSITE]
+
+- name: THJCC CTF 臺灣高中職聯合資安競賽（夏季賽）
+  series: thjcc
+  year: 2026
+  date: Aug 15 - Aug 16
+  start: 2026-08-15
+  end: 2026-08-16
+  description: THJCC CTF 2026 夏季賽，免費線上 Jeopardy 形式 CTF，主要對象為台灣高中職學生。
+  comment: 倒數至比賽開始
+  link: https://ctf2026-sum.thjcc.org/
+  deadline:
+    - "2026-08-15 08:00"
+  timezone: Asia/Taipei
+  place: Online
+  tags: [EDU, ONLINE]
+
+- name: THJCC CTF 臺灣高中職聯合資安競賽
+  series: thjcc
+  year: 2026
+  date: Feb 21 - Feb 22
+  start: 2026-02-21
+  end: 2026-02-22
+  description: THJCC CTF 2026，由高中生資訊社群 SCINT、SCIST 舉辦的新手友善線上 CTF，限台灣高中職學生競獎，所有參賽者皆可獲得參賽證明。
+  link: https://ctf2026.thjcc.org/
+  deadline:
+    - "2026-01-22 23:59"
+  timezone: Asia/Taipei
+  place: Online
+  tags: [EDU, ONLINE]

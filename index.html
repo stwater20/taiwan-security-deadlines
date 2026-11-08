@@ -21,7 +21,7 @@
           "url": "{{ page_url }}",
           "description": {{ site.description | jsonify }},
           "inLanguage": "zh-Hant-TW",
-          "publisher": { "@type": "Organization", "name": "SecTools.tw", "url": "https://sectools.tw/" }
+          "publisher": { "@type": "Organization", "name": "SecTools.tw", "url": "https://sectools.tw/", "logo": "{{ site.url }}{{ site.baseurl }}/static/img/icon-512.png" }
         },
         {
           "@type": "ItemList",
@@ -128,12 +128,14 @@
         </ul>
       </section>
 
+      {% include category-nav.html %}
+
       <section class="about" aria-labelledby="h-about">
         <h2 id="h-about">關於這個網站</h2>
         <div class="faq">
           <div>
             <h3>收錄哪些活動？</h3>
-            <p>以台灣的資安教育活動為主，包含 AIS3 新型態資安暑期課程、AIS3 Junior、AIS3 EOF CTF、MyFirstCTF、臺灣好厲駭、HITCON 台灣駭客年會、CYBERSEC 臺灣資安大會、資安技能金盾獎、全國技能競賽網路安全職類、SITCON 等課程、CTF 競賽與研討會。</p>
+            <p>以台灣的資安教育活動為主，包含 AIS3 新型態資安暑期課程、AIS3 Junior、AIS3 EOF CTF、MyFirstCTF、臺灣好厲駭、HITCON 台灣駭客年會、CYBERSEC 臺灣資安大會、資安技能金盾獎、全國技能競賽網路安全職類、THJCC 高中職 CTF、TeamT5 Security Camp、SITCON 等課程、營隊、CTF 競賽與研討會。</p>
           </div>
           <div>
             <h3>怎麼訂閱截止日？</h3>

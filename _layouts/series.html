@@ -81,6 +81,8 @@
         {{ content }}
       </article>
 
+      {% include series-faq.html latest=latest %}
+
       <section class="series-index" aria-labelledby="h-series">
         <h2 id="h-series" class="section-title">其他台灣資安活動</h2>
         <ul class="series-grid">
@@ -88,9 +90,10 @@
           {%- for s in all_series -%}{%- if s.key != page.key %}
           <li><a href="{{ s.url | prepend: site.baseurl }}"><b>{{ s.name }}</b><span>{{ s.kind }}</span></a></li>
           {%- endif -%}{%- endfor %}
-          <li><a href="{{ site.baseurl }}/"><b>看所有活動倒數 →</b><span>台灣資安活動行事曆</span></a></li>
         </ul>
       </section>
+
+      {% include category-nav.html %}
     </main>
 
     {% include footer.html %}

@@ -2,6 +2,7 @@
 key: "taiwan-holyhigh"
 name: "臺灣好厲駭"
 kind: "資安人才培育・導師制"
+category: "camps"
 order: 5
 organizer: "教育部資通安全人才培育計畫"
 audience: "學生，經書審與面試甄選"

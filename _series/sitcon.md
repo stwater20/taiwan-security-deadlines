@@ -2,6 +2,7 @@
 key: "sitcon"
 name: "SITCON 學生計算機年會"
 kind: "研討會・學生社群"
+category: "conferences"
 order: 10
 organizer: "SITCON 學生計算機年會籌備團隊"
 audience: "學生與對資訊技術有興趣的所有人"

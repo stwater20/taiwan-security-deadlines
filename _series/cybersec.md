@@ -2,6 +2,7 @@
 key: "cybersec"
 name: "CYBERSEC 臺灣資安大會"
 kind: "研討會・展覽"
+category: "conferences"
 order: 9
 organizer: "iThome"
 audience: "資安從業人員、企業 IT 人員、學生"

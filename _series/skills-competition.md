@@ -2,6 +2,7 @@
 key: "skills-competition"
 name: "全國技能競賽 網路安全職類"
 kind: "技能競賽"
+category: "ctf"
 order: 7
 organizer: "勞動部勞動力發展署技能檢定中心"
 audience: "青年組（依簡章年齡規定）"

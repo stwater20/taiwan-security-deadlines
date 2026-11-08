@@ -1,0 +1,9 @@
+- key: ctf
+  name: CTF 比賽
+  url: /ctf/
+- key: camps
+  name: 資安營隊・課程
+  url: /camps/
+- key: conferences
+  name: 資安研討會
+  url: /conferences/

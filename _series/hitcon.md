@@ -2,6 +2,7 @@
 key: "hitcon"
 name: "HITCON 台灣駭客年會"
 kind: "研討會・社群活動"
+category: "conferences"
 order: 8
 organizer: "台灣駭客協會（HIT）"
 audience: "對資安有興趣的所有人，部分活動限學生"

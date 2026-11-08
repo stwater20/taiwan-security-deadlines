@@ -2,6 +2,7 @@
 key: "golden-shield"
 name: "資安技能金盾獎"
 kind: "CTF 競賽・高中職／大專"
+category: "ctf"
 order: 6
 organizer: "數位發展部資通安全署"
 audience: "高中職組與大專院校組學生，組隊參賽"

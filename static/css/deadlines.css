@@ -83,6 +83,10 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; letter-spacing: .01em; font-size: 15px; }
 .brand img { border-radius: 7px; background: #fff; }
 .brand:hover { text-decoration: none; opacity: .9; }
+.topbar { gap: 12px; flex-wrap: wrap; }
+.nav-links { display: flex; gap: 4px 18px; flex-wrap: wrap; margin-left: auto; font-size: 14px; }
+.nav-links a { color: var(--hero-muted); }
+.nav-links a:hover, .nav-links a[aria-current] { color: #fff; text-decoration: none; }
 .gh {
   display: inline-flex; align-items: center; gap: 6px;
   font-size: 14px; padding: 6px 12px; border-radius: 999px;
@@ -290,6 +294,7 @@ code { font-family: var(--mono); font-size: .9em; background: var(--surface-2); 
   .card { grid-template-columns: 1fr; padding: 16px; gap: 14px; }
   .card-side { border-left: 0; padding-left: 0; border-top: 1px dashed var(--border); padding-top: 14px; }
   .faq { grid-template-columns: 1fr; }
+  .nav-links { order: 3; width: 100%; margin-left: 0; gap: 4px 16px; }
   .facts { grid-template-columns: 1fr; }
   .toolbar { gap: 8px; }
 }
